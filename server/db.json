@@ -1,24 +1,22 @@
 {
-    "notes": {
-        "items": [
-            {
-                "title": "I'm first title",
-                "details": "A lot of details",
-                "category": "reminders",
-                "id": 1
-            },
-            {
-                "title": "I'm second title",
-                "details": "Details of second note",
-                "category": "todos",
-                "id": 2
-            },
-            {
-                "title": "I'm third title",
-                "details": "Third note details",
-                "category": "work",
-                "id": 3
-            }
-        ]
+  "notes": [
+    {
+      "id": 1,
+      "title": "first title",
+      "details": "one detail",
+      "category": "work"
+    },
+    {
+      "id": 2,
+      "title": "second title",
+      "details": "two detail",
+      "category": "todos"
+    },
+    {
+      "id": 3,
+      "title": "third title",
+      "details": "three detail",
+      "category": "work"
     }
+  ]
 }

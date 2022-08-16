@@ -1,12 +1,22 @@
-import React from "react"
-import { Outlet } from "react-router-dom"
+import React, { useEffect, useState } from "react"
+import * as axios from "axios"
 
 
-function Notes () {
+function Notes() {
+
+    const [notes, setNotes] = useState([])
+
+    useEffect(() => {
+        axios.get("http://localhost:3001/notes")
+            .then(response => response.data)
+            .then(data => setNotes(data))
+    }, [])
+
     return (
         <div>
-            Notes Page
-            <Outlet />
+           {notes.map(note => (
+            <p key={note.id}>{note.title}</p>
+           ))}
         </div>
     )
 }

@@ -2,7 +2,7 @@ import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Te
 import { Container } from "@mui/system"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useState } from "react"
-
+import * as axios from "axios"
 
 
 function Create() {
@@ -34,7 +34,11 @@ function Create() {
             setDetailsError(true)
         }
         if (title && details) {
-            console.log(title, details, category)
+            axios.post("http://localhost:3001/notes", {
+                title,
+                details,
+                category
+            })
             setDetails("")
             setTitle("")
         }
