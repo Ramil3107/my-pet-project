@@ -2,10 +2,10 @@ import { Button, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Te
 import { Container } from "@mui/system"
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import React, { useState } from "react"
-import * as axios from "axios"
+import { useOutletContext } from "react-router-dom";
 
 
-function Create() {
+const Create = () => {
 
     const classes = {
         field: {
@@ -20,10 +20,11 @@ function Create() {
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
     const [category, setCategory] = useState("todos")
+    const { CreateNote } = useOutletContext()
+
 
     let submitHandler = (e) => {
         e.preventDefault()
-
         setTitleError(false)
         setDetailsError(false)
 
@@ -34,11 +35,7 @@ function Create() {
             setDetailsError(true)
         }
         if (title && details) {
-            axios.post("http://localhost:3001/notes", {
-                title,
-                details,
-                category
-            })
+            CreateNote(title, details, category)
             setDetails("")
             setTitle("")
         }
