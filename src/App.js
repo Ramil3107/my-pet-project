@@ -3,8 +3,9 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { typography } from '@mui/system';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Create from './pages/Create';
-import Notes from './pages/Notes';
+import { NotesLayout } from './pages/Notes/NotesLayout';
+import Create from './pages/Notes/Create';
+import Notes from './pages/Notes/Notes';
 
 const theme = createTheme({
   palette: {
@@ -26,8 +27,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path='/' element={<Notes />} />
-        <Route path='create' element={<Create />} />
+        <Route path='/' element={<NotesLayout />} >
+          <Route path='create' element={<Create />} />
+          <Route path='notes' element={<Notes />} />
+        </Route>
       </Routes>
     </ThemeProvider>
   );

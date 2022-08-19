@@ -46,7 +46,7 @@ function Create() {
 
     return (
 
-        <Container>
+        <Container size="sm">
 
             <Typography
                 variant="h6"
