@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import notes from "../pages/notes/redux/notesSlice"
-
-
+import notesSlice from "../pages/notes/redux/notesSlice";
 
 export const store = configureStore({
     reducer: {
-        notes
+        notes:notesSlice
     }
 })
+
+
+window.store = store.getState()

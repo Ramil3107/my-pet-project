@@ -1,16 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+    myNotes: []
+}
 
-
-const noteSlice = createSlice({
-    name:'notes',
-    initialState: {
-        myNotes:[]
-    },
+const notesSlice = createSlice({
+    name: 'notes',
+    initialState,
     reducers: {
-        
+        setNotes(state, action) {
+            state.myNotes = action.payload.data
+        }
+
     }
 })
 
 
-export default noteSlice.reducer
+export default notesSlice.reducer
+export const { setNotes } = notesSlice.actions

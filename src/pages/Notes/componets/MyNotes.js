@@ -5,30 +5,35 @@ import { NoteCard } from "./NoteCard"
 import Masonry from "react-masonry-css"
 import styles from "../Notes.module.css"
 import { notesAPI } from "../api/notesAPI"
+import { useDispatch, useSelector } from "react-redux"
+import { setNotes } from "../redux/notesSlice"
 
 
 function MyNotes() {
 
-    const [notes, setNotes] = useState([])
+    const notes = useSelector(state => state.notes.myNotes)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         notesAPI.getNotes()
-            .then(data => setNotes(data))
+            .then(data => dispatch(setNotes({ data })))
     }, [])
 
     const handleDelete = (id) => {
         notesAPI.deleteNote(id)
 
-        const newNotes = notes.filter(note => note.id != id)
-        setNotes(newNotes)
+        const data = notes.filter(note => note.id != id)
+        dispatch(setNotes({ data }))
     }
 
+    
+
     const breakpoints = {
-        default: 3,
-        1100: 2,
+        default: notes.length == 1 ? 1 : notes.length == 2 ? 2 : 3,
+        1100: notes.length == 1 ? 1 : 2,
         700: 1,
     };
-
+ 
     return (
         <Container>
             <Grid container spacing={3}>

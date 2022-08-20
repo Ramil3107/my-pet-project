@@ -21,5 +21,4 @@ export const notesAPI = {
         return instance.delete(`notes/${id}`)
     }
 
-
 }
