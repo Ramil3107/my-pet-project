@@ -4,6 +4,7 @@ import { NoteCard } from "./NoteCard"
 import Masonry from "react-masonry-css"
 import styles from "../Notes.module.css"
 import { useOutletContext } from "react-router-dom"
+import Loader from "../../../common/Loader/Loader"
 
 
 function MyNotes() {
@@ -28,6 +29,7 @@ function MyNotes() {
 
     return (
         <Container>
+            <Loader />
             <Grid container spacing={3}>
                 <Masonry
                     breakpointCols={breakpoints}
