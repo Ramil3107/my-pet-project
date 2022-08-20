@@ -2,62 +2,78 @@ import { AddCircleOutlineOutlined, SubjectOutlined } from "@mui/icons-material"
 import { AppBar, Avatar, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { format } from "date-fns"
-import { Outlet, useLocation, useNavigate, useOutletContext } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { notesAPI } from "./api/notesAPI"
+import { setNotes } from "./redux/notesSlice"
 
 const DRAWER_WIDTH = 240
+const classes = {
+    page: {
+        background: "#f9f9f9",
+        width: "100%",
+        padding: 20,
+        paddingTop: 110
+    },
+    drawer: {
+        width: DRAWER_WIDTH
+    },
+    drawerPaper: {
+        width: DRAWER_WIDTH
+    },
+    root: {
+        display: "flex"
+    },
+    active: {
+        backgroundColor: "#f4f4f4"
+    },
+    appbar: {
+        width: `calc(100% - ${DRAWER_WIDTH}px)`,
+        height: 65
+    },
+    date: {
+        flexGrow: 1
+    },
+    avatar: {
+        marginLeft: 2,
+        backgroundColor: blue[200]
+    }
+}
+const sideDrawerItems = [
+    {
+        text: 'My Notes',
+        icon: <SubjectOutlined color='secondary' />,
+        path: "/notes"
+    },
+    {
+        text: 'Create Note',
+        icon: <AddCircleOutlineOutlined color='secondary' />,
+        path: "/create"
+    },
+]
 
 
 export const Notes = () => {
 
-    const classes = {
-        page: {
-            background: "#f9f9f9",
-            width: "100%",
-            padding: 20,
-            paddingTop: 110
-        },
-        drawer: {
-            width: DRAWER_WIDTH
-        },
-        drawerPaper: {
-            width: DRAWER_WIDTH
-        },
-        root: {
-            display: "flex"
-        },
-        active: {
-            backgroundColor: "#f4f4f4"
-        },
-        appbar: {
-            width: `calc(100% - ${DRAWER_WIDTH}px)`,
-            height: 65
-        },
-        date: {
-            flexGrow: 1
-        },
-        avatar: {
-            marginLeft: 2,
-            backgroundColor: blue[200]
-        }
-    }
-    const sideDrawerItems = [
-        {
-            text: 'My Notes',
-            icon: <SubjectOutlined color='secondary' />,
-            path: "/notes"
-        },
-        {
-            text: 'Create Note',
-            icon: <AddCircleOutlineOutlined color='secondary' />,
-            path: "/create"
-        },
-    ]
+    const notes = useSelector(state => state.notes.myNotes)
     const navigate = useNavigate()
     const location = useLocation()
+    const dispatch = useDispatch()
 
-    const CreateNote = (...arg) => {
+    const onCreateNote = (...arg) => {
         notesAPI.createNote(...arg)
+    }
+
+    const showNotes = () => {
+        notesAPI.getNotes()
+            .then(data => dispatch(setNotes({ data })))
+    }
+
+    const onDeleteNote = (id) => {
+        notesAPI.deleteNote(id)
+
+        const data = notes.filter(note => note.id != id)
+        dispatch(setNotes({ data }))
     }
 
 
@@ -125,7 +141,7 @@ export const Notes = () => {
             {/* Pages */}
 
             <div style={classes.page}>
-                <Outlet context={{ CreateNote }} />
+                <Outlet context={{ onCreateNote, showNotes, onDeleteNote, notes }} />
             </div>
 
         </div>

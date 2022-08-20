@@ -20,7 +20,7 @@ const Create = () => {
     const [titleError, setTitleError] = useState(false)
     const [detailsError, setDetailsError] = useState(false)
     const [category, setCategory] = useState("todos")
-    const { CreateNote } = useOutletContext()
+    const { onCreateNote } = useOutletContext()
 
 
     let submitHandler = (e) => {
@@ -35,7 +35,7 @@ const Create = () => {
             setDetailsError(true)
         }
         if (title && details) {
-            CreateNote(title, details, category)
+            onCreateNote(title, details, category)
             setDetails("")
             setTitle("")
         }

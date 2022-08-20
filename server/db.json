@@ -1,12 +1,6 @@
 {
   "notes": [
     {
-      "title": "sdfsdf",
-      "details": "sdfsdf",
-      "category": "money",
-      "id": 7
-    },
-    {
       "title": "notesAPI.getNotes().then(data => dispatch(setNotes({ data }))) }",
       "details": "notesAPI.getNotes()n(data => dispatch(setNotes({ data })))",
       "category": "todos",
@@ -17,6 +11,24 @@
       "details": "sdfsdfsdf",
       "category": "todos",
       "id": 9
+    },
+    {
+      "title": "sd",
+      "details": "asdasdasdasdasd",
+      "category": "todos",
+      "id": 10
+    },
+    {
+      "title": "sdfsdsfdsfsdfsdfs",
+      "details": "sdfsdfsdfaff",
+      "category": "work",
+      "id": 11
+    },
+    {
+      "title": "test",
+      "details": "132443141",
+      "category": "work",
+      "id": 12
     }
   ]
 }
