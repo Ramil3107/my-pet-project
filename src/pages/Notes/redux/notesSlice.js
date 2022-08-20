@@ -10,6 +10,10 @@ const notesSlice = createSlice({
     reducers: {
         setNotes(state, action) {
             state.myNotes = action.payload.data
+        },
+        deleteNote(state, action) {
+            console.log(action.payload)
+            state.myNotes = state.myNotes.filter(note => note.id != action.payload.id)
         }
 
     }
@@ -17,4 +21,4 @@ const notesSlice = createSlice({
 
 
 export default notesSlice.reducer
-export const { setNotes } = notesSlice.actions
+export const { setNotes, deleteNote } = notesSlice.actions

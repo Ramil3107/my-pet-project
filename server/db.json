@@ -7,28 +7,10 @@
       "id": 8
     },
     {
-      "title": "sdfsdf",
-      "details": "sdfsdfsdf",
-      "category": "todos",
+      "title": "What is JavaScript ?",
+      "details": "JavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.",
+      "category": "reminders",
       "id": 9
-    },
-    {
-      "title": "sd",
-      "details": "asdasdasdasdasd",
-      "category": "todos",
-      "id": 10
-    },
-    {
-      "title": "sdfsdsfdsfsdfsdfs",
-      "details": "sdfsdfsdfaff",
-      "category": "work",
-      "id": 11
-    },
-    {
-      "title": "test",
-      "details": "132443141",
-      "category": "work",
-      "id": 12
     }
   ]
 }
