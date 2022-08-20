@@ -12,7 +12,6 @@ const notesSlice = createSlice({
             state.myNotes = action.payload.data
         },
         deleteNote(state, action) {
-            console.log(action.payload)
             state.myNotes = state.myNotes.filter(note => note.id != action.payload.id)
         }
 

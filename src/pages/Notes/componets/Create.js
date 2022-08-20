@@ -62,6 +62,8 @@ const Create = () => {
 
                 <TextField
                     sx={classes.field}
+                    inputProps={{ maxLength: 30 }}
+                    placeholder="max length 30 characters"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     error={titleError}

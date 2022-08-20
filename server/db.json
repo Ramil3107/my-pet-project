@@ -11,6 +11,42 @@
       "details": "JavaScript is a dynamic computer programming language. It is lightweight and most commonly used as a part of web pages, whose implementations allow client-side script to interact with the user and make dynamic pages. It is an interpreted programming language with object-oriented capabilities.",
       "category": "reminders",
       "id": 9
+    },
+    {
+      "title": "Client-Side JavaScript",
+      "details": "Client-side JavaScript is the most common form of the language. The script should be included in or referenced by an HTML document for the code to be interpreted by the browser.\n\nIt means that a web page need not be a static HTML, but can include programs that interact with the user, control the browser, and dynamically create HTML content.",
+      "category": "reminders",
+      "id": 10
+    },
+    {
+      "title": "JavaScript Development Tools",
+      "details": "One of major strengths of JavaScript is that it does not require expensive development tools. You can start with a simple text editor such as Notepad. Since it is an interpreted language inside the context of a web browser, you don't even need to buy a compiler.",
+      "category": "reminders",
+      "id": 11
+    },
+    {
+      "title": "What is Lorem Ipsum?",
+      "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "category": "todos",
+      "id": 12
+    },
+    {
+      "title": "Why do we use it?",
+      "details": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+      "category": "money",
+      "id": 13
+    },
+    {
+      "title": "Where can I get some?",
+      "details": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+      "category": "work",
+      "id": 14
+    },
+    {
+      "title": "Go to the school with my fried",
+      "details": "w",
+      "category": "todos",
+      "id": 15
     }
   ]
 }
