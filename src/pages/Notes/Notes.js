@@ -5,7 +5,7 @@ import { format } from "date-fns"
 import { useDispatch, useSelector } from "react-redux"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { notesAPI } from "./api/notesAPI"
-import { deleteNote, setNotes } from "./redux/notesSlice"
+import { deleteNote, deleteNoteThunk, getNotesThunk, setNotes } from "./redux/notesSlice"
 
 const DRAWER_WIDTH = 240
 const classes = {
@@ -65,13 +65,11 @@ export const Notes = () => {
     }
 
     const showNotes = () => {
-        notesAPI.getNotes()
-            .then(data => dispatch(setNotes({ data })))
+        dispatch(getNotesThunk())
     }
 
     const onDeleteNote = (id) => {
-        notesAPI.deleteNote(id)
-        dispatch(deleteNote({id}))
+        dispatch(deleteNoteThunk(id))
     }
 
 
