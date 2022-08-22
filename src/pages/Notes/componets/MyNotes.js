@@ -4,12 +4,12 @@ import { NoteCard } from "./NoteCard"
 import Masonry from "react-masonry-css"
 import styles from "../Notes.module.css"
 import { useOutletContext } from "react-router-dom"
-import Loader from "../../../common/Loader/Loader"
 
 
 function MyNotes() {
 
     const { notes, showNotes, onDeleteNote } = useOutletContext()
+
 
     useEffect(() => {
         showNotes()
@@ -29,7 +29,6 @@ function MyNotes() {
 
     return (
         <Container>
-            <Loader />
             <Grid container spacing={3}>
                 <Masonry
                     breakpointCols={breakpoints}
@@ -45,6 +44,7 @@ function MyNotes() {
             </Grid>
         </Container>
     )
+
 }
 
 export default MyNotes
