@@ -30,7 +30,7 @@ const SignIn = () => {
         <>
             <h1>Sign In</h1>
             <div><Form title={"Sign In"} submitHandler={SignInHandler} /></div>
-            <div>Need an account?<NavLink to="signup">Sign Up</NavLink></div>
+            <div>Need an account?<NavLink to="/auth/signup">Sign Up</NavLink></div>
         </>
     )
 }

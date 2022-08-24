@@ -28,7 +28,7 @@ const SignUp = () => {
         <>
             <h1>Sign Up</h1>
             <div><Form title={"Sign Up"} submitHandler={SignUpHandler} /></div>
-            <div>Already a user?<NavLink to="signin">Sign In</NavLink></div>
+            <div>Already a user?<NavLink to="/auth/signin">Sign In</NavLink></div>
         </>
     )
 }
