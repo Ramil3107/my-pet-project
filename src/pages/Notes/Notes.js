@@ -43,12 +43,12 @@ const sideDrawerItems = [
     {
         text: 'My Notes',
         icon: <SubjectOutlined color='secondary' />,
-        path: "/notes"
+        path: "mynotes"
     },
     {
         text: 'Create Note',
         icon: <AddCircleOutlineOutlined color='secondary' />,
-        path: "/create"
+        path: "create"
     },
 ]
 
