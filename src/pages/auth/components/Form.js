@@ -2,14 +2,18 @@ import { useState } from "react"
 
 
 
-const Form = (title, submitHandler) => {
+const Form = ({ title, submitHandler }) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
     return (
         <>
-            <form>
+            <form onSubmit={(e) => {
+                e.preventDefault()
+                submitHandler(email, password)
+            }
+            }>
                 <input
                     type="email"
                     placeholder="Email"
@@ -25,10 +29,9 @@ const Form = (title, submitHandler) => {
 
                 <input
                     type="submit"
-                    onClick={submitHandler}
-                >
-                    {title}
-                </input>
+                    placeholder="submit"
+                    value={title}
+                />
             </form>
         </>
     )
