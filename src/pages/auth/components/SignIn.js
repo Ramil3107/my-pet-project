@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom"
 
 
 
-const SignIn = () => {
+const SignIn = () => { 
     return (
         <>
         <h1>Sign In</h1>
