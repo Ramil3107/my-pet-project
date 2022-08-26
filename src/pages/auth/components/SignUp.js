@@ -4,6 +4,7 @@ import Form from "./Form";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
 import { signUpThunk } from "../redux/thunks";
+import { Box, Typography } from "@mui/material";
 
 
 const SignUp = () => {
@@ -16,11 +17,33 @@ const SignUp = () => {
     }
 
     return (
-        <>
-            <h1>Sign Up</h1>
-            <div><Form title={"Sign Up"} submitHandler={SignUpHandler} /></div>
-            <div>Already a user?<NavLink to="/auth/signin">Sign In</NavLink></div>
-        </>
+        <Box
+            component="div"
+            sx={{ width: "65ch" }}
+            pt={10}
+        >
+            <Typography
+                variant="h4"
+                color="textSecondary"
+                component="h2"
+            >
+                Sign Up
+            </Typography>
+            <div>
+                <Form title={"Sign Up"}
+                    submitHandler={SignUpHandler}
+                />
+            </div>
+            <Typography
+                variant="subtitle1"
+                color="textSecondary"
+                component="p"
+                align="left"
+            >
+                Already a user?
+                <NavLink to="/auth/signin">Sign In</NavLink>
+            </Typography>
+        </Box>
     )
 }
 
