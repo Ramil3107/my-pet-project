@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom"
 import Form from "./Form"
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../redux/userSlice";
 import { useDispatch } from "react-redux";
+import { signInThunk } from "../redux/thunks";
 
 
 
@@ -10,27 +9,24 @@ const SignIn = () => {
 
     const dispatch = useDispatch()
 
-    const SignInHandler = (email, password) => {
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
-            .then(({ user }) => {
-                dispatch(setUser({
-                    email: user.email,
-                    token: user.accessToken,
-                    id: user.uid
-                }))
-            })
-            .catch((error) => {
-                alert(error.message)
-            });
-
+    const signInHandler = (email, password) => {
+        const data = {email,password}
+        dispatch(signInThunk(data))
     }
 
     return (
         <>
             <h1>Sign In</h1>
-            <div><Form title={"Sign In"} submitHandler={SignInHandler} /></div>
-            <div>Need an account?<NavLink to="/auth/signup">Sign Up</NavLink></div>
+            <div>
+                <Form
+                    title={"Sign In"}
+                    submitHandler={signInHandler}
+                />
+            </div>
+            <div>
+                Need an account?
+                <NavLink to="/auth/signup">Sign Up</NavLink>
+            </div>
         </>
     )
 }

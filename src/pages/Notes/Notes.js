@@ -5,7 +5,7 @@ import { format } from "date-fns"
 import { useDispatch, useSelector } from "react-redux"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { notesAPI } from "./api/notesAPI"
-import { deleteNote, deleteNoteThunk, getNotesThunk, setNotes } from "./redux/notesSlice"
+import { deleteNoteThunk, getNotesThunk } from "./redux/thunks"
 
 const DRAWER_WIDTH = 240
 const classes = {

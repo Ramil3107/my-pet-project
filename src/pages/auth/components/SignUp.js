@@ -3,6 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
+import { signUpThunk } from "../redux/thunks";
 
 
 const SignUp = () => {
@@ -10,18 +11,8 @@ const SignUp = () => {
     const dispatch = useDispatch()
 
     const SignUpHandler = (email, password) => {
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(({user}) => {
-                dispatch(setUser({
-                    email:user.email,
-                    token:user.accessToken,
-                    id:user.uid
-                }))
-            })
-            .catch((error) => {
-                alert(error.message)
-            })
+        const data = { email, password }
+        dispatch(signUpThunk(data))
     }
 
     return (
