@@ -2,7 +2,8 @@ import { NavLink } from "react-router-dom"
 import Form from "./Form"
 import { useDispatch } from "react-redux";
 import { signInThunk } from "../redux/thunks";
-import { Box, Typography } from "@mui/material";
+import { Alert, Box, Typography } from "@mui/material";
+import { useState } from "react";
 
 
 
@@ -22,9 +23,9 @@ const SignIn = () => {
             pt={10}
         >
             <Typography
-            variant="h4"
-            color="textSecondary"
-            component="h2"
+                variant="h4"
+                color="textSecondary"
+                component="h2"
             >
                 Sign In
             </Typography>
@@ -39,9 +40,19 @@ const SignIn = () => {
                 color="textSecondary"
                 component="p"
                 align="left">
-                Need an account? 
+                Need an account?
                 <NavLink to="/auth/signup">Sign Up</NavLink>
             </Typography>
+            <Box
+                component="div"
+                align="left">
+                <Alert
+                    sx={{ mt: 3, fontSize: 13, width: "max-content", textAlign: "left" }}
+                    severity={"info"}
+                >
+                    Please Sign In to visit website.
+                </Alert>
+            </Box>
         </Box>
     )
 }
