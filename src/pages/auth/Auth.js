@@ -10,7 +10,7 @@ const Auth = () => {
 
     const dispatch = useDispatch()
     const { isAuth, email } = useAuth()
-    const [value, setValue] = useState('one');
+    const [value, setValue] = useState('1');
 
     const logoutHandler = () => {
         dispatch(removeUser())
@@ -25,32 +25,29 @@ const Auth = () => {
         <Box
             component="div"
         >
-            <Box
-                component="div"
-                mt={1}
+            
+            <Tabs
+                sx={{mt:2}}
+                centered
+                value={value}
+                onChange={handleChange}
+                indicatorColor="secondary"
+                textColor="secondary"
             >
-                <Tabs
-                    centered
-                    value={value}
-                    onChange={handleChange}
-                    aria-label="wrapped label tabs example"
-                    indicatorColor="secondary"
-                    textColor="secondary"
-                >
-                    <Tab
-                        value="1"
-                        label="Sign In"
-                        component={NavLink}
-                        to="signin"
-                    />
-                    <Tab
-                        value="2"
-                        label="Sign Up"
-                        component={NavLink}
-                        to="signup"
-                    />
-                </Tabs>
-            </Box>
+                <Tab
+                    value="1"
+                    label="Sign In"
+                    component={NavLink}
+                    to="signin"
+                />
+                <Tab
+                    value="2"
+                    label="Sign Up"
+                    component={NavLink}
+                    to="signup"
+                />
+            </Tabs>
+
             {
                 isAuth ?
                     <div>
