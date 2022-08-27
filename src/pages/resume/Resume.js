@@ -14,11 +14,11 @@ const Resume = () => {
             <Box sx={{ width: "60%", display: "flex", flexWrap: "wrap", mt: 5 }}>
 
 
-                <Box align="center" sx={{ boxSizing: "border-box", width: 200 }}>
+                <Box align="center" sx={{ boxSizing: "border-box", width: "30%" }}>
                     <Avatar src={resumeAvatar} sx={{ boxSizing: "border-box", width: 120, height: 120 }} />
                 </Box>
 
-                <Box sx={{ boxSizing: "border-box", width: 600 }}>
+                <Box sx={{ boxSizing: "border-box", width: "70%" }}>
                     <Typography
                         gutterBottom
                         sx={{ ml: 0, fontWeight: "600" }}
