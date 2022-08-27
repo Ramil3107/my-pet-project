@@ -7,6 +7,7 @@ import MyNotes from './pages/notes/componets/MyNotes';
 import Auth from './pages/auth/Auth';
 import SignIn from './pages/auth/components/SignIn';
 import SignUp from './pages/auth/components/SignUp';
+import Resume from './pages/resume/Resume';
 
 const theme = createTheme({
   palette: {
@@ -28,6 +29,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
+
+
+        <Route path='resume' element={<Resume/>} />
+
 
         <Route path='auth' element={<Auth />}>
           <Route path="signin" element={<SignIn />} />
