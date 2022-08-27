@@ -13,7 +13,9 @@ import reduxicon from "../../assets/iconsPNG/reduxicon.png"
 import axiosIcon from "../../assets/iconsPNG/axiosIcon.png"
 import routerDom from "../../assets/iconsPNG/routerDom.png"
 import firebaseIcon from "../../assets/iconsPNG/firebaseIcon.png"
-import { Link } from "react-router-dom"
+
+
+
 
 const Resume = () => {
 
@@ -68,8 +70,16 @@ const Resume = () => {
                     >
                         <LocationOn color="secondary" fontSize="medium" />
                         Surabaya City, East Java, Indonesia
-                        <LinkedIn onClick={() => "hi" } sx={{ ml: 1 }} color="secondary" fontSize="medium" />
-                        <GitHub sx={{ ml: 1 }} color="secondary" fontSize="medium" />
+                        <LinkedIn
+                            onClick={() => window.open('https://www.linkedin.com/in/ramil-abbasov-a1b40324a/', '_blank')}
+                            sx={{ ml: 1, cursor: "pointer" }}
+                            color="secondary"
+                            fontSize="medium" />
+                        <GitHub
+                            onClick={() => window.open('https://github.com/Ramil3107', '_blank')}
+                            sx={{ ml: 1, cursor: "pointer" }}
+                            color="secondary"
+                            fontSize="medium" />
                     </Typography>
                 </Box>
 
@@ -160,11 +170,6 @@ const Resume = () => {
                 </Box>
 
             </Box>
-
-
-
-
-
 
         </Box>
     )
