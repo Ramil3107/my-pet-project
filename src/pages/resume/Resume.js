@@ -1,5 +1,5 @@
 import { GitHub, LinkedIn, LocationOn } from "@mui/icons-material"
-import { Avatar, Paper, SvgIcon, Typography } from "@mui/material"
+import { Avatar, Divider, Paper, SvgIcon, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import resumeAvatar from "../../assets/resumeAvatar.JPG"
 import html from "../../assets/iconsPNG/html.png"
@@ -35,7 +35,7 @@ const Resume = () => {
     }
 
     return (
-        <Box align="center">
+        <Box align="center" sx={{height:"500vh"}}>
 
             <Box sx={{ width: "60%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", mt: 5 }}>
 
@@ -167,6 +167,18 @@ const Resume = () => {
                         <Typography sx={{ ml: 1 }}>Firebase</Typography>
                     </Paper>
 
+                </Box>
+
+                <Box sx={{ mt: 10, float: "left", width: "100%" }}>
+                    <Typography
+                        sx={{ fontWeight: 600, }}
+                        variant="h4"
+                        color="secondary"
+                        align="left"
+                    >
+                        Projects
+                    </Typography>
+                    <Divider sx={{mt:3}}/>
                 </Box>
 
             </Box>
