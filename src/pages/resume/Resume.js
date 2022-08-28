@@ -31,11 +31,64 @@ const Resume = () => {
             mr: 3,
             pl: 1,
             pr: 1
+        },
+        socialSmallIcons: {
+            ml: 1,
+            cursor: "pointer"
         }
     }
 
+    const techStackItems = [
+        {
+            src: html,
+            title: "HTML"
+        },
+        {
+            src: css,
+            title: "CSS"
+        },
+        {
+            src: js,
+            title: "Java Script"
+        },
+        {
+            src: react,
+            title: "React"
+        },
+        {
+            src: reactNative,
+            title: "React Native"
+        },
+    ]
+    const librariesServicesItems = [
+        {
+            src: mui,
+            title: "Material UI"
+        },
+        {
+            src: reduxicon,
+            title: "Redux / React-Redux"
+        },
+        {
+            src: form,
+            title: "React Hook Form"
+        },
+        {
+            src: axiosIcon,
+            title: "Axios"
+        },
+        {
+            src: routerDom,
+            title: "React Router Dom(v6)"
+        },
+        {
+            src: firebaseIcon,
+            title: "Firebase"
+        },
+    ]
+
     return (
-        <Box align="center" sx={{height:"500vh"}}>
+        <Box align="center" sx={{ height: "500vh" }}>
 
             <Box sx={{ width: "60%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", mt: 5 }}>
 
@@ -72,12 +125,12 @@ const Resume = () => {
                         Surabaya City, East Java, Indonesia
                         <LinkedIn
                             onClick={() => window.open('https://www.linkedin.com/in/ramil-abbasov-a1b40324a/', '_blank')}
-                            sx={{ ml: 1, cursor: "pointer" }}
+                            sx={styles.socialSmallIcons}
                             color="secondary"
                             fontSize="medium" />
                         <GitHub
                             onClick={() => window.open('https://github.com/Ramil3107', '_blank')}
-                            sx={{ ml: 1, cursor: "pointer" }}
+                            sx={styles.socialSmallIcons}
                             color="secondary"
                             fontSize="medium" />
                     </Typography>
@@ -105,27 +158,16 @@ const Resume = () => {
                         Tech Stack
                     </Typography>
 
+                    {
+                        techStackItems.map(item => {
+                            return <Paper sx={styles.paper}>
+                                <img style={{ width: 30, height: 30 }} src={item.src} />
+                                <Typography sx={{ ml: 1 }}>{item.title}</Typography>
+                            </Paper>
+                        })
+                    }
 
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={html} />
-                        <Typography sx={{ ml: 1 }}>HTML</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={css} />
-                        <Typography sx={{ ml: 1 }}>CSS</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={js} />
-                        <Typography sx={{ ml: 1 }}>Java Script</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={react} />
-                        <Typography sx={{ ml: 1 }}>React</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 35, height: 35 }} src={reactNative} />
-                        <Typography sx={{ ml: 1 }}>React Native</Typography>
-                    </Paper>
+
 
                 </Box>
 
@@ -142,30 +184,14 @@ const Resume = () => {
                     </Typography>
 
 
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={mui} />
-                        <Typography sx={{ ml: 1 }}>Material UI</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={reduxicon} />
-                        <Typography sx={{ ml: 1 }}>Redux/React-Redux</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 45, height: 45 }} src={form} />
-                        <Typography sx={{ ml: 1 }}>React Hook Form</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={axiosIcon} />
-                        <Typography sx={{ ml: 1 }}>Axios</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={routerDom} />
-                        <Typography sx={{ ml: 1 }}>React Router Dom(v6)</Typography>
-                    </Paper>
-                    <Paper sx={styles.paper}>
-                        <img style={{ width: 30, height: 30 }} src={firebaseIcon} />
-                        <Typography sx={{ ml: 1 }}>Firebase</Typography>
-                    </Paper>
+                    {
+                        librariesServicesItems.map(item => {
+                            return <Paper sx={styles.paper}>
+                                <img style={{ width: 30, height: 30 }} src={item.src} />
+                                <Typography sx={{ ml: 1 }}>{item.title}</Typography>
+                            </Paper>
+                        })
+                    }
 
                 </Box>
 
@@ -178,7 +204,7 @@ const Resume = () => {
                     >
                         Projects
                     </Typography>
-                    <Divider sx={{mt:3}}/>
+                    <Divider sx={{ mt: 3 }} />
                 </Box>
 
             </Box>
