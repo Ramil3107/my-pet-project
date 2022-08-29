@@ -1,5 +1,5 @@
 import { GitHub, LinkedIn, LocationOn } from "@mui/icons-material"
-import { Avatar, Divider, Paper, SvgIcon, Typography } from "@mui/material"
+import { Avatar, Divider, Grid, Paper, SvgIcon, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import resumeAvatar from "../../assets/resumeAvatar.JPG"
 import html from "../../assets/iconsPNG/html.png"
@@ -13,6 +13,9 @@ import reduxicon from "../../assets/iconsPNG/reduxicon.png"
 import axiosIcon from "../../assets/iconsPNG/axiosIcon.png"
 import routerDom from "../../assets/iconsPNG/routerDom.png"
 import firebaseIcon from "../../assets/iconsPNG/firebaseIcon.png"
+import socialShare from "../../assets/iconsPNG/socialShare.png"
+import paw from "../../assets/iconsPNG/paw.png"
+import khnadu from "../../assets/iconsPNG/khnadu.png"
 
 
 
@@ -60,6 +63,7 @@ const Resume = () => {
             title: "React Native"
         },
     ]
+
     const librariesServicesItems = [
         {
             src: mui,
@@ -87,6 +91,30 @@ const Resume = () => {
         },
     ]
 
+    const projectsItems = [
+        {
+            src: socialShare,
+            projectName: "Social Network",
+            projectLink: "social-media.com",
+            projectNote: "My first project",
+            projectDescription: "During 3 years working as a freelance designer, I get a lot of experience helping the branding process of several companies, from small companies to large companies, such as energy companies.",
+        },
+        {
+            src: paw,
+            projectName: "My Pet Project",
+            projectLink: "my-pet-project.com",
+            projectNote: "My second project",
+            projectDescription: "5 years as an educator at Al-Fatah Elementary School apart from making the teaching and learning       process fun, I have been the chairman of several events both offline and online, such as celebrations of national."
+        },
+        {
+            src: reactNative,
+            projectName: "React Native ",
+            projectLink: "react-native.com",
+            projectNote: "My third project",
+            projectDescription: "During 3 years working as a freelance designer, I get a lot of experience helping the branding process of several companies, from small companies to large companies, such as energy companies.",
+        },
+    ]
+
     return (
         <Box align="center" sx={{ height: "500vh" }}>
 
@@ -98,7 +126,6 @@ const Resume = () => {
                 </Box>
 
                 <Box sx={{ boxSizing: "border-box", width: "650px" }}>
-
                     <Typography
                         gutterBottom
                         sx={{ ml: 0, fontWeight: "600" }}
@@ -138,8 +165,7 @@ const Resume = () => {
 
 
 
-                <Box sx={{ mt: 10, float: "left", width: "100%" }}>
-
+                <Box sx={{ mt: 10, width: "100%" }}>
                     <Typography
                         sx={{ fontWeight: 600, }}
                         variant="h4"
@@ -166,14 +192,10 @@ const Resume = () => {
                             </Paper>
                         })
                     }
-
-
-
                 </Box>
 
 
-                <Box sx={{ mt: 3, float: "left", width: "100%" }}>
-
+                <Box sx={{ mt: 3, width: "100%" }}>
                     <Typography
                         sx={{ mt: 2.5 }}
                         variant="h6"
@@ -192,10 +214,9 @@ const Resume = () => {
                             </Paper>
                         })
                     }
-
                 </Box>
 
-                <Box sx={{ mt: 10, float: "left", width: "100%" }}>
+                <Box sx={{ mt: 10, width: "100%" }}>
                     <Typography
                         sx={{ fontWeight: 600, }}
                         variant="h4"
@@ -207,9 +228,104 @@ const Resume = () => {
                     <Divider sx={{ mt: 3 }} />
                 </Box>
 
+                {
+                    projectsItems.map(item => {
+                        return <Grid container sx={{ mt: 3 }}>
+                            <Grid xs={2} item>
+                                <img style={{ width: 90, height: 90, float: "left" }} src={item.src} />
+                            </Grid>
+                            <Grid item xs={4}>
+                                <Typography
+                                    fontWeight="medium"
+                                    variant="h5"
+                                    color="text.primary"
+                                    align="left"
+                                >
+                                    {item.projectName}
+                                </Typography>
+                                <Typography
+                                    variant="h6"
+                                    color="secondary"
+                                    align="left"
+                                >
+                                    {item.projectLink}
+                                </Typography>
+                                <Typography
+                                    variant="subtitle1"
+                                    color="text.secondary"
+                                    align="left"
+                                    fontWeight="medium"
+                                >
+                                    {item.projectNote}
+                                </Typography>
+                            </Grid>
+                            <Grid xs={6} item>
+                                <Typography
+                                    variant="subtitle1"
+                                    color="text.secondary"
+                                    fontWeight="medium"
+                                    align="left"
+                                >
+                                    {item.projectDescription}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    })
+                }
+
+                <Box sx={{ mt: 10, width: "100%" }}>
+                    <Typography
+                        sx={{ fontWeight: 600, }}
+                        variant="h4"
+                        color="secondary"
+                        align="left"
+                    >
+                        Education
+                    </Typography>
+                    <Divider sx={{ mt: 3 }} />
+                </Box>
+
+
+                <Box sx={{width:"100%", mt:3}}>
+                    <img style={{ width: 130, height: 130, float: "left" }} src={khnadu} />
+
+                    <Typography
+                        fontWeight="medium"
+                        variant="h5"
+                        color="text.primary"
+                        align="left"
+                    >
+                        Kharkiv National Automobile and Highway University
+                    </Typography>
+                    <Typography
+                        variant="h6"
+                        color="secondary"
+                        align="left"
+                    >
+                        Master's Degree
+                    </Typography>
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        align="left"
+                        fontWeight="medium"
+                    >
+                        2015-2020
+                    </Typography>
+
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        fontWeight="medium"
+                        align="left"
+                    >
+                        About
+                    </Typography>
+                </Box>
+
             </Box>
 
-        </Box>
+        </Box >
     )
 }
 
