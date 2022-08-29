@@ -1,5 +1,5 @@
 import { GitHub, LinkedIn, LocationOn } from "@mui/icons-material"
-import { Avatar, Divider, Grid, Paper, SvgIcon, Typography } from "@mui/material"
+import { Avatar, Divider, Grid, List, ListItem, Paper, SvgIcon, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import resumeAvatar from "../../assets/resumeAvatar.JPG"
 import html from "../../assets/iconsPNG/html.png"
@@ -115,10 +115,13 @@ const Resume = () => {
         },
     ]
 
-    return (
-        <Box align="center" sx={{ height: "500vh" }}>
+    const advantagesItem = ["I have a three pet projects", "Studied with a mentor", "Have little commercial experience"]
+    const languagesItem = ["English", "Ukrainian", "Russian", "azerbaijani"]
 
-            <Box sx={{ width: "60%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", mt: 5 }}>
+    return (
+        <Box align="center" sx={{ }}>
+
+            <Box sx={{ width: "65%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", mt: 5 }}>
 
 
                 <Box sx={{ boxSizing: "border-box", width: "180px" }}>
@@ -259,7 +262,7 @@ const Resume = () => {
                                     {item.projectNote}
                                 </Typography>
                             </Grid>
-                            <Grid  xs={12} md={12} lg={6} item>
+                            <Grid xs={12} md={12} lg={6} item>
                                 <Typography
                                     variant="subtitle1"
                                     color="text.secondary"
@@ -285,7 +288,7 @@ const Resume = () => {
                     <Divider sx={{ mt: 3 }} />
                 </Box>
 
-                <Box sx={{width:"100%", display:"flex", flexWrap:"wrap", mt:3}}>
+                <Box sx={{ width: "100%", display: "flex", flexWrap: "wrap", mt: 3 }}>
                     <Box sx={{ width: 130 }}>
                         <img style={{ width: 130, height: 130, float: "left" }} src={khnadu} />
                     </Box>
@@ -317,8 +320,81 @@ const Resume = () => {
 
                 </Box>
 
-            </Box>
+                <Box sx={{ display: 'flex', flexWrap: "wrap", width: "100%", mt: 5, p: 5, mb:5,color: "white", bgcolor: "rgb(50,64,108)" }}>
+                    <Box sx={{ mr: 25, width: 300 }}>
+                        <Typography
+                            fontWeight="medium"
+                            variant="h5"
+                            color="primary"
+                            align="left"
+                        >
+                            Advantages
+                        </Typography>
+                        <Divider color="white" sx={{ mt: 3 }} />
 
+                        <List
+                            sx={{
+                                listStyleType: 'disc',
+                                pl: 2,
+                                '& .MuiListItem-root': {
+                                    display: 'list-item',
+                                },
+                            }}>
+                            {
+                                advantagesItem.map(title => {
+                                    return <ListItem sx={{ fontSize: 20 }}>
+                                        <Typography
+                                            variant="subtitle1"
+                                            color="primary"
+                                            align="left"
+                                            fontWeight="medium"
+                                        >
+                                            {title}
+                                        </Typography>
+                                    </ListItem>
+                                })
+                            }
+                        </List>
+                    </Box>
+                    <Box sx={{ width: 300 }}>
+                        <Typography
+                            fontWeight="medium"
+                            variant="h5"
+                            color="primary"
+                            align="left"
+                        >
+                            Languages
+                        </Typography>
+                        <Divider color="white" sx={{ mt: 3, color: "white" }} />
+
+                        <List
+                            sx={{
+                                listStyleType: 'disc',
+                                pl: 2,
+                                '& .MuiListItem-root': {
+                                    display: 'list-item',
+                                },
+                            }}>
+                            {
+                                languagesItem.map(title => {
+                                    return <ListItem sx={{ fontSize: 20 }}>
+                                        <Typography
+                                            variant="subtitle1"
+                                            color="primary"
+                                            align="left"
+                                            fontWeight="medium"
+                                        >
+                                            {title}
+                                        </Typography>
+                                    </ListItem>
+
+                                })
+                            }
+                        </List>
+                    </Box>
+                </Box>
+
+            </Box>
         </Box >
     )
 }
