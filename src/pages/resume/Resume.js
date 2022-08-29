@@ -186,7 +186,7 @@ const Resume = () => {
 
                     {
                         techStackItems.map(item => {
-                            return <Paper sx={styles.paper}>
+                            return <Paper key={item.title} sx={styles.paper}>
                                 <img style={{ width: 30, height: 30 }} src={item.src} />
                                 <Typography sx={{ ml: 1 }}>{item.title}</Typography>
                             </Paper>
@@ -208,7 +208,7 @@ const Resume = () => {
 
                     {
                         librariesServicesItems.map(item => {
-                            return <Paper sx={styles.paper}>
+                            return <Paper key={item.title} sx={styles.paper}>
                                 <img style={{ width: 30, height: 30 }} src={item.src} />
                                 <Typography sx={{ ml: 1 }}>{item.title}</Typography>
                             </Paper>
@@ -230,11 +230,11 @@ const Resume = () => {
 
                 {
                     projectsItems.map(item => {
-                        return <Grid container sx={{ mt: 3 }}>
-                            <Grid xs={2} item>
+                        return <Grid spacing={1} container wrap="wrap" sx={{ mt: 3 }}>
+                            <Grid xs={12} md={3} lg={2} item>
                                 <img style={{ width: 90, height: 90, float: "left" }} src={item.src} />
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={4} lg={4}>
                                 <Typography
                                     fontWeight="medium"
                                     variant="h5"
@@ -259,7 +259,7 @@ const Resume = () => {
                                     {item.projectNote}
                                 </Typography>
                             </Grid>
-                            <Grid xs={6} item>
+                            <Grid  xs={12} md={12} lg={6} item>
                                 <Typography
                                     variant="subtitle1"
                                     color="text.secondary"
@@ -285,42 +285,36 @@ const Resume = () => {
                     <Divider sx={{ mt: 3 }} />
                 </Box>
 
+                <Box sx={{width:"100%", display:"flex", flexWrap:"wrap", mt:3}}>
+                    <Box sx={{ width: 130 }}>
+                        <img style={{ width: 130, height: 130, float: "left" }} src={khnadu} />
+                    </Box>
+                    <Box sx={{ width: 400 }}>
+                        <Typography
+                            fontWeight="medium"
+                            variant="h5"
+                            color="text.primary"
+                            align="left"
+                        >
+                            Kharkiv National Automobile and Highway University
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            color="secondary"
+                            align="left"
+                        >
+                            Master's Degree
+                        </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                            align="left"
+                            fontWeight="medium"
+                        >
+                            2015-2020
+                        </Typography>
+                    </Box>
 
-                <Box sx={{width:"100%", mt:3}}>
-                    <img style={{ width: 130, height: 130, float: "left" }} src={khnadu} />
-
-                    <Typography
-                        fontWeight="medium"
-                        variant="h5"
-                        color="text.primary"
-                        align="left"
-                    >
-                        Kharkiv National Automobile and Highway University
-                    </Typography>
-                    <Typography
-                        variant="h6"
-                        color="secondary"
-                        align="left"
-                    >
-                        Master's Degree
-                    </Typography>
-                    <Typography
-                        variant="subtitle1"
-                        color="text.secondary"
-                        align="left"
-                        fontWeight="medium"
-                    >
-                        2015-2020
-                    </Typography>
-
-                    <Typography
-                        variant="subtitle1"
-                        color="text.secondary"
-                        fontWeight="medium"
-                        align="left"
-                    >
-                        About
-                    </Typography>
                 </Box>
 
             </Box>
