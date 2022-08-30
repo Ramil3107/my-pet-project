@@ -115,8 +115,8 @@ const Resume = () => {
         },
     ]
 
-    const advantagesItem = ["I have a three pet projects", "Studied with a mentor", "Have little commercial experience"]
-    const languagesItem = ["English", "Ukrainian", "Russian", "azerbaijani"]
+    const advantagesItem = ["I have three pet projects", "Studied with a mentor", "Have little commercial experience"]
+    const languagesItem = ["English", "Ukrainian", "Russian", "Azerbaijani"]
 
     return (
         <Box align="center" sx={{ }}>

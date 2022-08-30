@@ -8,7 +8,7 @@ import enjoyItImg from "../../../assets/homePage/enjoyItImg.png"
 const initialState = {
     pages: [
         {
-            title: "Home Page",
+            title: "Home",
             description: `Your first stop at my site! You are now on the home page. Here I talk about the existing pages in my application and how to interact with it. At the bottom of the page you can notice the navigation buttons, by clicking on which you can read the information about each page. Also by clicking on the button 'Show Me!' (disable here) you can go to the page you are interested in.This application was created for fun and for the practice of my skills.Thanks and enjoy it!`,
             buttonText: "You Already Here",
             img: homePageImg,
@@ -16,7 +16,7 @@ const initialState = {
             isDisabled: true
         },
         {
-            title: "Resume Page",
+            title: "Resume",
             description: "Yes, this page is about me and no, I'm not a narcissist, haha. On this page you can see what I am studying now and what technologies and services I have come across. Also here you can read a little about my pet projects and follow the link to see.There is also boring information about my education and the languages I speak haha.",
             buttonText: "Show Me",
             img: CVpage,
@@ -24,7 +24,7 @@ const initialState = {
             isDisabled: false
         },
         {
-            title: "Profile Page",
+            title: "Profile",
             description: "This is your space and only yours. The so-called user information. Add your avatar (feel free), first name, last name and nickname so that my app remembers you. Do this and it will start saying hello to you, on every page! My pet app is shy to contact you without knowing your name, so don't embarrass him =)",
             buttonText: "Show Me",
             img: profileImg,
@@ -32,8 +32,8 @@ const initialState = {
             isDisabled: false
         },
         {
-            title: "News",
-            description: "There will be news about updates in the application, and also about upcoming innovations. Perhaps I will implement something like a blog on this page, where I will also post interesting news from the IT world.",
+            title: "Notes",
+            description: "Nice page where you can add and remove notes for your profile.ы",
             buttonText: "Show Me",
             img: newsImg,
             bgcolor: "#79c1d9",

@@ -5,7 +5,6 @@ import { Checkbox } from "@mui/material"
 const CheckboxIcon = ({ Icon, OutlinedIcon, onClick, checked, color }) => {
     return (
         <Checkbox
-
             checked={checked}
             onClick={onClick}
             size="large"
