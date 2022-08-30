@@ -4,6 +4,17 @@ import homePageImg from "../../../assets/homePage/homePageImg.png"
 import profileImg from "../../../assets/homePage/profileImg.png"
 import newsImg from "../../../assets/homePage/newsImg.png"
 import enjoyItImg from "../../../assets/homePage/enjoyItImg.png"
+import {
+    Article,
+    ArticleOutlined,
+    Home, HomeOutlined,
+    Lightbulb,
+    LightbulbOutlined,
+    NewReleases,
+    NewReleasesOutlined,
+    Person,
+    PersonOutline,
+} from "@mui/icons-material"
 
 const initialState = {
     pages: [
@@ -46,6 +57,38 @@ const initialState = {
             img: enjoyItImg,
             bgcolor: "#ca97d4",
             isDisabled: false
+        }
+    ],
+    navIcons:[
+        {
+            color: "#ff796e",
+            name: "home",
+            icon: Home,
+            outlinedIcon: HomeOutlined
+        },
+        {
+            color: "#f1a350",
+            name: "resume",
+            icon: Article,
+            outlinedIcon: ArticleOutlined
+        },
+        {
+            color: "#2e5c9a",
+            name: "profile",
+            icon: Person,
+            outlinedIcon: PersonOutline
+        },
+        {
+            color: "#3085a1",
+            name: "notes",
+            icon: NewReleases,
+            outlinedIcon: NewReleasesOutlined
+        },
+        {
+            color: "#6e4975",
+            name: "fun",
+            icon: Lightbulb,
+            outlinedIcon: LightbulbOutlined
         }
     ],
     currentScreen: "home"

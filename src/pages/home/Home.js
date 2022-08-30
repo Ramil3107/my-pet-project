@@ -6,8 +6,7 @@ import Navigation from "./components/Navigation"
 
 const Home = () => {
 
-    const pages = useSelector(state => state.home.pages)
-    const currentScreen = useSelector(state => state.home.currentScreen)
+    const { pages, navIcons, currentScreen } = useSelector(state => state.home)
 
     const setScreen = (currentScreen) => {
         switch (currentScreen) {
@@ -17,9 +16,9 @@ const Home = () => {
                 return pages[1]
             case "profile":
                 return pages[2]
-            case "news":
+            case "notes":
                 return pages[3]
-            case "secret":
+            case "fun":
                 return pages[4]
         }
     }
@@ -27,11 +26,11 @@ const Home = () => {
     return (
         <>
             <Typography
-            pt={2}
-            height={10}
-            color="white"
-            bgcolor={setScreen(currentScreen).bgcolor}
-            align="center"
+                pt={2}
+                height={10}
+                color="white"
+                bgcolor={setScreen(currentScreen).bgcolor}
+                align="center"
                 variant="h4"
             >
                 Roadmap
@@ -77,12 +76,17 @@ const Home = () => {
                         style={{ width: "100%", height: "33rem" }}
                         src={setScreen(currentScreen).img} />
                 </Box>
+
                 <Box
                     align="center"
                     sx={{ width: "100%", mt: 5, pb: 5 }}
                 >
-                    <Navigation currentScreen={currentScreen} />
+                    <Navigation
+                        currentScreen={currentScreen}
+                        navIcons={navIcons}
+                    />
                 </Box>
+
             </Box>
         </>
 
