@@ -1,12 +1,13 @@
 import { Box, Button, Typography } from "@mui/material"
-import CVpage from "../../../assets/aboutPage/CVpage.png"
-import homePageImg from "../../../assets/aboutPage/homePageImg.png"
+import CVpage from "../../assets/homePage/CVpage.png"
+import homePageImg from "../../assets/homePage/homePageImg.png"
+import Navigation from "./components/Navigation"
 
 
 
 const Home = () => {
     return (
-        <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", width: "100%", }}>
+        <Box sx={{ display: "flex", alignItems: "center", flexWrap: "wrap", width: "100%", bgcolor: "#ffbfba", minHeight: "100vh"}}>
             <Box sx={{ ml: "5%", width: 500, p: 1 }}>
                 <Typography
                     sx={{ mt: 3 }}
@@ -36,6 +37,11 @@ const Home = () => {
             <Box sx={{ width: 800 }}>
                 <img style={{ width: "100%", height: "100%" }} src={homePageImg} />
             </Box>
+
+            <Box align="center" sx={{width:"100%", mt:5, pb:5}}>
+                <Navigation />
+            </Box>
+
         </Box>
     )
 }

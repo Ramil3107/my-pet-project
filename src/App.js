@@ -8,8 +8,7 @@ import Auth from './pages/auth/Auth';
 import SignIn from './pages/auth/components/SignIn';
 import SignUp from './pages/auth/components/SignUp';
 import Resume from './pages/resume/Resume';
-import Home from './pages/home/components/Home';
-import About from './pages/home/About';
+import Home from './pages/home/Home';
 
 const theme = createTheme({
   palette: {
@@ -33,9 +32,9 @@ function App() {
       <Routes>
 
 
-        <Route path="about" element={<About />}>
-          <Route path='home' element={<Home />} />
-        </Route>
+
+        <Route path='home' element={<Home />} />
+
 
         <Route path='resume' element={<Resume />} />
 
