@@ -37,7 +37,7 @@ function MyNotes() {
                 >
                     {notes.map(note => (
                         <div key={note.id}>
-                            <NoteCard note={note} handleDelete={handleDelete} />
+                            <NoteCard note={note} handleDelete={() => handleDelete(note.id)} />
                         </div>
                     ))}
                 </Masonry>
