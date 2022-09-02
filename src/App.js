@@ -9,7 +9,8 @@ import SignIn from './pages/auth/components/SignIn';
 import SignUp from './pages/auth/components/SignUp';
 import Resume from './pages/resume/Resume';
 import Home from './pages/home/Home';
-import Enjoy from './pages/enjoy/Enjoy';
+import Redux from './pages/enjoy/Redux';
+import Material from './pages/enjoy/Material';
 
 const theme = createTheme({
   palette: {
@@ -47,7 +48,8 @@ function App() {
           <Route path='mynotes' element={<MyNotes />} />
         </Route>
 
-        <Route path='enjoy' element={<Enjoy />} />
+        <Route path='enjoy' element={<Material/>} />
+        <Route path='enjoy/redux' element={<Redux />} />
 
       </Routes>
     </ThemeProvider>

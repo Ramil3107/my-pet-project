@@ -1,14 +1,16 @@
-import { TextFieldsOutlined, VolumeDown, VolumeUp } from "@mui/icons-material"
-import { Button, Divider, Rating, Slider, TextField, Typography } from "@mui/material"
+import { Add, ExpandMore, Mail, Remove, StarBorder, TextFieldsOutlined, VolumeDown, VolumeUp } from "@mui/icons-material"
+import { Accordion, AccordionDetails, AccordionSummary, Alert, Badge, Button, ButtonGroup, Divider, Rating, Slider, Switch, TextField, Typography } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { Box, Stack } from "@mui/system"
 import { useState } from "react"
+import { NavLink } from "react-router-dom"
 
 const styles = {
     wrapper: {
         bgcolor: "rgb(14, 25, 40)",
-        minHeight: "200vh",
-        pt: 5
+        minHeight: "max-content",
+        pt: 5,
+        pb: 20
     },
     blockDescription: {
         bgcolor: "rgb(8, 29, 58)",
@@ -26,6 +28,7 @@ const styles = {
     },
     elementsBlock: {
         display: "flex",
+        flexWrap: "wrap",
         justifyContent: "space-around",
         alignItems: "center",
         width: "70%"
@@ -66,9 +69,14 @@ const styles = {
 
 
 
-const Enjoy = () => {
+const Material = () => {
 
     const [volume, setVolume] = useState(30)
+    const [starValue, setStarValue] = useState(3)
+    const [switchValue, setSwitchValue] = useState(true)
+    const [badgeCount, setBadgeCount] = useState(3)
+    const [alertValue, setAlertValue] = useState("info")
+
     const handleVolume = (event, newValue) => {
         setVolume(newValue);
     };
@@ -136,21 +144,95 @@ const Enjoy = () => {
             </Box>
             <Divider variant="middle" sx={{ bgcolor: "white", width: "70%", mb: 10 }} />
 
-            <Box>
-                <Typography variant="h5" color="primary" sx={styles.elementsTitle}>Play With That</Typography>
-                <Box sx={styles.elementsBlock}>
-                    <Rating />
-                    <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                        <VolumeDown />
-                        <Slider sx={{width:100}} aria-label="Volume" value={volume} onChange={handleVolume} />
-                        <Typography color="primary">{volume}</Typography>
-                        <VolumeUp />
-                    </Stack>˝
+
+            <Typography variant="h5" color="primary" sx={styles.elementsTitle}>Play With That</Typography>
+
+            <Box sx={styles.elementsBlock}>
+                <Box sx={{ mr: 5 }}>
+                    <Rating
+                        onClick={(e) => setStarValue(e.target.value)}
+                        value={starValue}
+                        emptyIcon={<StarBorder sx={{ color: "white" }} fontSize="inherit" />}
+                    />
                 </Box>
+                <Box>
+                    <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                        <VolumeDown color="primary" />
+                        <Slider sx={{ width: 100 }} aria-label="Volume" value={volume} onChange={handleVolume} />
+                        <Typography color="primary">{volume}</Typography>
+                        <VolumeUp color="primary" />
+                    </Stack>
+                </Box>
+
+                <Box>
+                    <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+                        <Switch checked={switchValue} onChange={() => setSwitchValue(!switchValue)} color="error" />
+                        <Switch checked={switchValue} onChange={() => setSwitchValue(!switchValue)} color="warning" />
+                        <Switch checked={switchValue} onChange={() => setSwitchValue(!switchValue)} color="info" />
+                    </Stack>
+                </Box>
+
+                <Box sx={{ display: "flex" }}>
+                    <Box>
+                        <Badge sx={{ mr: 3 }} color="primary" badgeContent={badgeCount}>
+                            <Mail color="primary" />
+                        </Badge>
+                    </Box>
+                    <Box>
+                        <ButtonGroup>
+                            <Button
+                                aria-label="reduce"
+                                onClick={() => {
+                                    setBadgeCount(Math.max(badgeCount - 1, 0));
+                                }}
+                            >
+                                <Remove fontSize="small" />
+                            </Button>
+                            <Button
+                                aria-label="increase"
+                                onClick={() => {
+                                    setBadgeCount(badgeCount + 1);
+                                }}
+                            >
+                                <Add fontSize="small" />
+                            </Button>
+                        </ButtonGroup>
+                    </Box>
+                </Box>
+
+                <Box sx={{ display: "flex", mt: 3 }}>
+                    <Alert severity={alertValue}>This is an alert — Don't Click The Button!</Alert>
+                    <Button
+                        onClick={() => alertValue == "info" ? setAlertValue("error") : setAlertValue("info")}
+                    >
+                        Don't Click Me!
+                    </Button>
+                </Box>
+
+                <Box sx={{ mt: 3 }}>
+                    <Accordion>
+                        <AccordionSummary
+                            expandIcon={<ExpandMore />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            <Typography>Open Me!</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography>
+                                You Are The Best!
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                </Box>
+
             </Box>
+
+            <Divider variant="middle" sx={{ bgcolor: "white", width: "70%", mt: 10 }} />
+            <Button component={NavLink} to="redux" sx={{mt:10}} variant="outlined" size="large">Next Step: Redux</Button>
 
         </Box >
     )
 }
 
-export default Enjoy
+export default Material
