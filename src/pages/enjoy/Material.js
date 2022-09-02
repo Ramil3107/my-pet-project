@@ -2,7 +2,7 @@ import { Add, ExpandMore, Mail, Remove, StarBorder, TextFieldsOutlined, VolumeDo
 import { Accordion, AccordionDetails, AccordionSummary, Alert, Badge, Button, ButtonGroup, Divider, Rating, Slider, Switch, TextField, Typography } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { Box, Stack } from "@mui/system"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 
 const styles = {
@@ -71,6 +71,7 @@ const styles = {
 
 const Material = () => {
 
+    useEffect(() => { window.scrollTo(0, 0) }, [])
     const [volume, setVolume] = useState(30)
     const [starValue, setStarValue] = useState(3)
     const [switchValue, setSwitchValue] = useState(true)

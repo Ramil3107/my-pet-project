@@ -11,6 +11,7 @@ import Resume from './pages/resume/Resume';
 import Home from './pages/home/Home';
 import Redux from './pages/enjoy/Redux';
 import Material from './pages/enjoy/Material';
+import ReactHookForm from './pages/enjoy/ReactHookForm';
 
 const theme = createTheme({
   palette: {
@@ -50,6 +51,7 @@ function App() {
 
         <Route path='enjoy' element={<Material/>} />
         <Route path='enjoy/redux' element={<Redux />} />
+        <Route path='enjoy/hookform' element={<ReactHookForm />} />
 
       </Routes>
     </ThemeProvider>

@@ -50,7 +50,7 @@ const Redux = () => {
     const dispatch = useDispatch()
     const [localStateValue, setLocalStateValue] = useState("")
     const [stateValue, setStateValue] = useState("")
-    // useEffect(() => { window.scrollTo(0, 0) }, [])
+    useEffect(() => { window.scrollTo(0, 0) }, [])
 
     return (
         <Box align="center" sx={styles.wrapper}>
@@ -180,7 +180,26 @@ const Redux = () => {
             </Box>
 
             <Divider variant="middle" sx={{ bgcolor: "white", width: "50%", mt: 10, mb: 10 }} />
-            <Button variant="outlined" sx={{height:50}} component={NavLink} to="/enjoy/hookform" >Next Step : React Hook Form</Button>
+
+            <Box sx={{ width: "40%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems:"center"}}>
+                <Button
+                    variant="outlined"
+                    sx={{ height: 50 }}
+                    component={NavLink}
+                    to="/enjoy" >
+                    Back to Material UI
+                </Button>
+
+                <Divider sx={{ bgcolor: "white", height: 40 }} orientation="vertical" light />
+
+                <Button
+                    variant="outlined"
+                    sx={{ height: 50 }}
+                    component={NavLink}
+                    to="/enjoy/hookform" >
+                    Go to React Hook Form
+                </Button>
+            </Box>
 
         </Box>
     )

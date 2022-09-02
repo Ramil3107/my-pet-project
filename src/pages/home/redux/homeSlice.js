@@ -24,7 +24,8 @@ const initialState = {
             buttonText: "You Already Here",
             img: homePageImg,
             bgcolor: "#ffbfba",
-            isDisabled: true
+            isDisabled: true,
+            buttonPath: "/home"
         },
         {
             title: "Resume",
@@ -32,7 +33,7 @@ const initialState = {
             buttonText: "Show Me",
             img: CVpage,
             bgcolor: "#f4cca1",
-            isDisabled: false
+            buttonPath: "/resume"
         },
         {
             title: "Profile",
@@ -40,7 +41,7 @@ const initialState = {
             buttonText: "Show Me",
             img: profileImg,
             bgcolor: "#b8d5fb",
-            isDisabled: false
+            buttonPath: "/profile"
         },
         {
             title: "Notes",
@@ -48,7 +49,8 @@ const initialState = {
             buttonText: "Show Me",
             img: newsImg,
             bgcolor: "#79c1d9",
-            isDisabled: false
+            isDisabled: false,
+            buttonPath: "/notes/mynotes"
         },
         {
             title: "Enjoy It",
@@ -56,10 +58,11 @@ const initialState = {
             buttonText: "Hmm, Interesting...",
             img: enjoyItImg,
             bgcolor: "#ca97d4",
-            isDisabled: false
+            isDisabled: false,
+            buttonPath: "/enjoy"
         }
     ],
-    navIcons:[
+    navIcons: [
         {
             color: "#ff796e",
             name: "home",
@@ -86,7 +89,7 @@ const initialState = {
         },
         {
             color: "#6e4975",
-            name: "fun",
+            name: "enjoy",
             icon: Lightbulb,
             outlinedIcon: LightbulbOutlined
         }

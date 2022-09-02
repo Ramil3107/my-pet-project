@@ -1,12 +1,17 @@
 import { Box, Button, Typography } from "@mui/material"
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import Navigation from "./components/Navigation"
 
 
 
 const Home = () => {
 
+    useEffect(() => { window.scrollTo(0, 0) }, [])
+
     const { pages, navIcons, currentScreen } = useSelector(state => state.home)
+    const navigate = useNavigate()
 
     const setScreen = (currentScreen) => {
         switch (currentScreen) {
@@ -18,7 +23,7 @@ const Home = () => {
                 return pages[2]
             case "notes":
                 return pages[3]
-            case "fun":
+            case "enjoy":
                 return pages[4]
         }
     }
@@ -61,6 +66,7 @@ const Home = () => {
                         {setScreen(currentScreen).description}
                     </Typography>
                     <Button
+                        onClick={() => navigate(setScreen(currentScreen).buttonPath)}
                         sx={{ mt: 5 }}
                         size="large"
                         variant="outlined"
