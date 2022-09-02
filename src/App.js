@@ -9,6 +9,7 @@ import SignIn from './pages/auth/components/SignIn';
 import SignUp from './pages/auth/components/SignUp';
 import Resume from './pages/resume/Resume';
 import Home from './pages/home/Home';
+import Enjoy from './pages/enjoy/Enjoy';
 
 const theme = createTheme({
   palette: {
@@ -32,22 +33,21 @@ function App() {
       <Routes>
 
 
-
-        <Route path='home' element={<Home />} />
-
-
-        <Route path='resume' element={<Resume />} />
-
-
         <Route path='auth' element={<Auth />}>
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
 
+        <Route path='home' element={<Home />} />
+
+        <Route path='resume' element={<Resume />} />
+
         <Route path='notes' element={<Notes />} >
           <Route path='create' element={<Create />} />
           <Route path='mynotes' element={<MyNotes />} />
         </Route>
+
+        <Route path='enjoy' element={<Enjoy />} />
 
       </Routes>
     </ThemeProvider>
