@@ -11,6 +11,7 @@ export const signInThunk = createAsyncThunk(
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 dispatch(setUser({
+                    displayName: user.displayName,
                     photoURL: user.photoURL,
                     email: user.email,
                     token: user.accessToken,

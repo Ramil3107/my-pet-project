@@ -46,7 +46,7 @@ const Profile = () => {
 
     return (
         <div style={{ marginLeft: 50 }}>
-            <h1>Welcome {email}</h1>
+            <h1>Welcome {displayName ? displayName : email}</h1>
             <button onClick={logoutHandler}>Log Out</button>
             <div style={{ marginTop: 50 }}>
                 <input type="file" onChange={browseFileHandler} />
