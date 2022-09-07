@@ -1,6 +1,6 @@
 import { purple } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Notes } from './pages/notes/Notes';
 import Create from './pages/notes/componets/Create';
 import MyNotes from './pages/notes/componets/MyNotes';
@@ -12,6 +12,11 @@ import Home from './pages/home/Home';
 import Redux from './pages/enjoy/Redux';
 import Material from './pages/enjoy/Material';
 import ReactHookForm from './pages/enjoy/ReactHookForm';
+import { useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { useAuth } from './hooks/useAuth';
+import { removeUser, setUser } from './pages/auth/redux/userSlice';
+import { useDispatch } from 'react-redux';
 
 const theme = createTheme({
   palette: {
@@ -30,15 +35,43 @@ const theme = createTheme({
 })
 
 function App() {
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const auth = getAuth()
+  const { isAuth } = useAuth()
+
+
+
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        dispatch(setUser({
+          photoURL: userAuth.photoURL,
+          email: userAuth.email,
+          token: userAuth.accessToken,
+          id: userAuth.uid
+        }))
+      } else {
+        dispatch(removeUser())
+        auth.signOut()
+        navigate("/auth/signin")
+      }
+    })
+  }, [])
+
+
+
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-
 
         <Route path='auth' element={<Auth />}>
           <Route path="signin" element={<SignIn />} />
           <Route path="signup" element={<SignUp />} />
         </Route>
+
 
         <Route path='home' element={<Home />} />
 
@@ -49,13 +82,13 @@ function App() {
           <Route path='mynotes' element={<MyNotes />} />
         </Route>
 
-        <Route path='enjoy' element={<Material/>} />
+        <Route path='enjoy' element={<Material />} />
         <Route path='enjoy/redux' element={<Redux />} />
         <Route path='enjoy/hookform' element={<ReactHookForm />} />
 
       </Routes>
     </ThemeProvider>
-  );
+  )
 }
 
 export default App;

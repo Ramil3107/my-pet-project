@@ -15,15 +15,17 @@ import { getAuth, updateProfile } from "firebase/auth"
 const Auth = () => {
 
     const dispatch = useDispatch()
+    const auth = getAuth()
     const storage = getStorage()
     const { isAuth, email, id, photoURL } = useAuth()
     const [value, setValue] = useState('1');
     const [photo, setPhoto] = useState(null)
-    const {currentUser} = getAuth()
+    const { currentUser } = getAuth()
 
     const logoutHandler = () => {
-        dispatch(removeUser())
 
+        dispatch(removeUser())
+        auth.signOut()
     }
 
     const handleChange = (event, newValue) => {
@@ -34,22 +36,16 @@ const Auth = () => {
         setPhoto(e.target.files[0])
     }
 
-    const uploadButtonHandler = () => {
-
-    }
-
-
-    //Profile
 
     const upload = async (file, userId) => {
         const fileRef = ref(storage, userId + ".png");
         const snapshot = await uploadBytes(fileRef, file)
         const photoURL = await getDownloadURL(fileRef)
-        
-        const profileUpdated = await updateProfile(currentUser, {photoURL:photoURL})
-        
+
+        const profileUpdated = await updateProfile(currentUser, { photoURL: photoURL })
+
         dispatch(setPhotoUrl(currentUser.photoURL))
-        
+
         alert("Uploaded file!")
     }
 
