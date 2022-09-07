@@ -7,6 +7,7 @@ const initialState = {
     token: null,
     id: null,
     photoURL: null,
+    displayName: null,
 }
 
 const userSlice = createSlice({
@@ -14,20 +15,24 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser(state, action) {
+            state.displayName = action.payload.displayName;
             state.photoURL = action.payload.photoURL;
             state.email = action.payload.email;
             state.token = action.payload.token;
             state.id = action.payload.id;
         },
         removeUser(state) {
+            state.displayName = null
             state.photoURL = null;
             state.email = null;
             state.token = null;
             state.id = null;
         },
         setPhotoUrl(state, action) {
-            console.log(action.payload)
             state.photoURL = action.payload
+        },
+        setDisplayName(state, action) {
+            state.displayName = action.payload
         }
     }
 })
@@ -35,4 +40,4 @@ const userSlice = createSlice({
 
 
 export default userSlice.reducer
-export const { setUser, removeUser, setPhotoUrl } = userSlice.actions
+export const { setUser, removeUser, setPhotoUrl, setDisplayName } = userSlice.actions

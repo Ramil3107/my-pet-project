@@ -49,6 +49,7 @@ function App() {
     onAuthStateChanged(auth, (userAuth) => {
       if (userAuth) {
         dispatch(setUser({
+          displayName: userAuth.displayName,
           photoURL: userAuth.photoURL,
           email: userAuth.email,
           token: userAuth.accessToken,
