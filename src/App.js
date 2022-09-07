@@ -17,6 +17,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useAuth } from './hooks/useAuth';
 import { removeUser, setUser } from './pages/auth/redux/userSlice';
 import { useDispatch } from 'react-redux';
+import Profile from './pages/profile/Profile';
 
 const theme = createTheme({
   palette: {
@@ -85,6 +86,9 @@ function App() {
         <Route path='enjoy' element={<Material />} />
         <Route path='enjoy/redux' element={<Redux />} />
         <Route path='enjoy/hookform' element={<ReactHookForm />} />
+
+        <Route path='profile' element={<Profile />} />
+
 
       </Routes>
     </ThemeProvider>
