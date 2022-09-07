@@ -3,10 +3,10 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { NavLink, Outlet } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
-import { removeUser } from "./redux/userSlice"
+import { removeUser, setPhotoUrl } from "./redux/userSlice"
 import defaultAvatar from "../../assets/defaultAvatar.png"
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { updateProfile } from "firebase/auth"
+import { getAuth, updateProfile } from "firebase/auth"
 
 
 
@@ -16,9 +16,10 @@ const Auth = () => {
 
     const dispatch = useDispatch()
     const storage = getStorage()
-    const { isAuth, email, id, avatar } = useAuth()
+    const { isAuth, email, id, photoURL } = useAuth()
     const [value, setValue] = useState('1');
     const [photo, setPhoto] = useState(null)
+    const {currentUser} = getAuth()
 
     const logoutHandler = () => {
         dispatch(removeUser())
@@ -43,7 +44,11 @@ const Auth = () => {
     const upload = async (file, userId) => {
         const fileRef = ref(storage, userId + ".png");
         const snapshot = await uploadBytes(fileRef, file)
-        const photoURL = getDownloadURL(fileRef)
+        const photoURL = await getDownloadURL(fileRef)
+        
+        const profileUpdated = await updateProfile(currentUser, {photoURL:photoURL})
+        
+        dispatch(setPhotoUrl(currentUser.photoURL))
         
         alert("Uploaded file!")
     }
@@ -62,7 +67,7 @@ const Auth = () => {
                             <img
                                 style={{ borderRadius: "100%", width: 50, height: 50 }}
                                 alt="avatar"
-                                src={avatar ? avatar : defaultAvatar}
+                                src={photoURL ? photoURL : defaultAvatar}
                             />
                         </div>
                     </div>
