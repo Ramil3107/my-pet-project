@@ -1,6 +1,6 @@
 import { Box, Tab, Tabs } from "@mui/material"
 import React, { useState } from "react"
-import { NavLink, Outlet } from "react-router-dom"
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
 import Profile from "../profile/Profile"
 
@@ -9,7 +9,7 @@ import Profile from "../profile/Profile"
 
 
 const Auth = () => {
-
+    const location = useLocation()
     const { isAuth } = useAuth()
     const [value, setValue] = useState('1');
 
@@ -52,7 +52,7 @@ const Auth = () => {
                             component="div"
                             align="center"
                         >
-                            <Outlet />
+                            <Outlet context={{ setValue }}/>
                         </Box>
                     </Box>
             }

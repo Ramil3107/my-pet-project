@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useOutletContext } from "react-router-dom"
 import Form from "./Form"
 import { useDispatch } from "react-redux";
 import { signInThunk } from "../redux/thunks";
@@ -9,6 +9,7 @@ import { useState } from "react";
 
 const SignIn = () => {
 
+    const { setValue } = useOutletContext()
     const dispatch = useDispatch()
 
     const signInHandler = (email, password) => {
@@ -41,7 +42,7 @@ const SignIn = () => {
                 component="p"
                 align="left">
                 Need an account?
-                <NavLink to="/auth/signup">Sign Up</NavLink>
+                <NavLink onClick={() => setValue("2")} to="/auth/signup">Sign Up</NavLink>
             </Typography>
             <Box
                 component="div"
