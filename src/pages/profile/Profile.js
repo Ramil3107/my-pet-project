@@ -9,6 +9,7 @@ import { Box } from "@mui/system"
 import { Avatar, Badge, Button, Divider, Grid, IconButton, Input, TextField, Typography } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { Add, Camera, PhotoCamera, Upload } from "@mui/icons-material"
+import ProfileInfo from "./components/ProfileInfo"
 
 
 
@@ -49,75 +50,25 @@ const Profile = () => {
         alert("Name Changed!")
     }
 
+    const propsToProfileInfo = {
+        displayName,
+        defaultAvatar,
+        setEditMode,
+        logoutHandler,
+        phoneNumber,
+        email,
+        id,
+        photoURL,
+        editMode
+    }
+
     return (
         <>
             {
                 !editMode ?
-                    <Box sx={{ width: "100%", mt: 3, ml: 1, mr: 1, }}>
-
-                        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
-                            <Avatar sx={{ width: 150, height: 150 }} src={photoURL || defaultAvatar} />
-                            <Box sx={{ ml: 3 }}>
-                                <Typography variant="h5" >{displayName}</Typography>
-                                <Typography sx={{ mb: 2 }} color={blue[500]} variant="subtitle1">User ID: {id}</Typography>
-                                <Button
-                                    sx={{ mr: 3 }}
-                                    size="small"
-                                    variant="outlined"
-                                    color="info"
-                                    onClick={() => setEditMode(!editMode)}
-                                >
-                                    Edit
-                                </Button>
-                                <Button
-                                    size="small"
-                                    variant="outlined"
-                                    color="error"
-                                    onClick={logoutHandler}
-                                >
-                                    Logout
-                                </Button>
-                            </Box>
-                        </Box>
-
-                        <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
-                            <Box sx={{ ml: 0, width: "80%", display: "flex", flexDirection: "column", flexWrap: "wrap" }}>
-                                <Divider variant="fullwidth" color="white" sx={{ mt: 5, color: "black", display: "block" }} />
-                                <Box sx={{ display: "flex", flexWrap: "wrap", p: 3 }}>
-                                    <Typography sx={{ mr: 1 }} variant="h6">
-                                        Nickname:
-                                    </Typography>
-                                    <Typography
-                                        variant="h6"
-                                        color={displayName ? "secondary" : "GrayText"}
-                                    >
-                                        {displayName || "Add your nickname"}
-                                    </Typography>
-                                </Box>
-                                <Divider variant="fullwidth" color="white" sx={{ color: "black" }} />
-                                <Box sx={{ display: "flex", flexWrap: "wrap", p: 3 }}>
-                                    <Typography sx={{ mr: 1 }} variant="h6">
-                                        Email:
-                                    </Typography>
-                                    <Typography variant="h6" color="secondary">{email}</Typography>
-                                </Box>
-                                <Divider variant="fullwidth" color="white" sx={{ color: "black" }} />
-                                <Box sx={{ display: "flex", p: 3 }}>
-                                    <Typography sx={{ mr: 1, flexWrap: "wrap", }} variant="h6">
-                                        Phone Number:
-                                    </Typography>
-                                    <Typography
-                                        variant="h6"
-                                        color={phoneNumber ? "secondary" : "GrayText"}
-                                    >
-                                        {phoneNumber || "Add your phone number"}
-                                    </Typography>
-                                </Box>
-                                <Divider variant="fullwidth" color="white" sx={{ color: "black" }} />
-                            </Box>
-                        </Box>
-
-                    </Box>
+                    <ProfileInfo
+                        {...propsToProfileInfo}
+                    />
                     :
                     <>
                         <Box sx={{ width: "100%", mt: 3, ml: 1, mr: 1, }}>
