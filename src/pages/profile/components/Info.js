@@ -4,7 +4,7 @@ import { Box } from "@mui/system"
 
 
 
-const ProfileInfo = ({ displayName, defaultAvatar, setEditMode, logoutHandler, phoneNumber, email, id, photoURL, editMode }) => {
+const Info = ({ displayName, defaultAvatar, setEditMode, logoutHandler, phoneNumber, email, id, photoURL, editMode }) => {
     const fields = [
         {
             label: "Nickname: ",
@@ -65,7 +65,7 @@ const ProfileInfo = ({ displayName, defaultAvatar, setEditMode, logoutHandler, p
                         {
                             fields.map(field => {
                                 return (
-                                    <>
+                                    <Box key={field.label}>
                                         <Box sx={{ display: "flex", flexWrap: "wrap", p: 3 }}>
                                             <Typography sx={{ mr: 1 }} variant="h6">
                                                 {field.label}
@@ -78,7 +78,7 @@ const ProfileInfo = ({ displayName, defaultAvatar, setEditMode, logoutHandler, p
                                             </Typography>
                                         </Box>
                                         <Divider variant="fullwidth" color="white" sx={{ color: "black" }} />
-                                    </>
+                                    </Box>
                                 )
                             })
                         }
@@ -90,4 +90,4 @@ const ProfileInfo = ({ displayName, defaultAvatar, setEditMode, logoutHandler, p
 }
 
 
-export default ProfileInfo
+export default Info
