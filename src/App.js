@@ -53,7 +53,8 @@ function App() {
           photoURL: userAuth.photoURL,
           email: userAuth.email,
           token: userAuth.accessToken,
-          id: userAuth.uid
+          id: userAuth.uid,
+          phoneNumber: userAuth.phoneNumber,
         }))
       } else {
         dispatch(removeUser())

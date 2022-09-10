@@ -8,6 +8,7 @@ const initialState = {
     id: null,
     photoURL: null,
     displayName: null,
+    phoneNumber: null,
 }
 
 const userSlice = createSlice({
@@ -20,6 +21,7 @@ const userSlice = createSlice({
             state.email = action.payload.email;
             state.token = action.payload.token;
             state.id = action.payload.id;
+            state.phoneNumber = action.payload.phoneNumber;
         },
         removeUser(state) {
             state.displayName = null

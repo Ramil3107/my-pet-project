@@ -15,7 +15,8 @@ export const signInThunk = createAsyncThunk(
                     photoURL: user.photoURL,
                     email: user.email,
                     token: user.accessToken,
-                    id: user.uid
+                    id: user.uid,
+                    phoneNumber: user.phoneNumber,
                 }))
             })
             .catch((error) => {
