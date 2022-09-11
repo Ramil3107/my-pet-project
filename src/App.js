@@ -71,30 +71,31 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
 
-        <Route path='auth' element={<Auth />}>
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
-        </Route>
+        {
+          !isAuth ?
+            <Route path='auth' element={<Auth />}>
+              <Route path="signin" element={<SignIn />} />
+              <Route path="signup" element={<SignUp />} />
+            </Route>
+            :
+            <Route path='/' element={<Layout />}>
+              <Route path='/' element={<Navigate to="/home" />} />
+              <Route path='home' element={<Home />} />
 
-        <Route path='/' element={<Layout />}>
-          <Route path='/' element={<Navigate to="/home" />} />
-          <Route path='home' element={<Home />} />
+              <Route path='resume' element={<Resume />} />
 
-          <Route path='resume' element={<Resume />} />
+              <Route path='notes' element={<Notes />} >
+                <Route path='create' element={<Create />} />
+                <Route path='mynotes' element={<MyNotes />} />
+              </Route>
 
-          <Route path='notes' element={<Notes />} >
-            <Route path='create' element={<Create />} />
-            <Route path='mynotes' element={<MyNotes />} />
-          </Route>
+              <Route path='enjoy' element={<Material />} />
+              <Route path='enjoy/redux' element={<Redux />} />
+              <Route path='enjoy/hookform' element={<ReactHookForm />} />
 
-          <Route path='enjoy' element={<Material />} />
-          <Route path='enjoy/redux' element={<Redux />} />
-          <Route path='enjoy/hookform' element={<ReactHookForm />} />
-
-          <Route path='profile' element={<Profile />} />
-        </Route>
-
-
+              <Route path='profile' element={<Profile />} />
+            </Route>
+        }
       </Routes>
     </ThemeProvider>
   )
