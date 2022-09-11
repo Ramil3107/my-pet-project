@@ -17,7 +17,7 @@ const Layout = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const auth = getAuth()
-    const open = anchorEl
+    const open = Boolean(anchorEl)
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
