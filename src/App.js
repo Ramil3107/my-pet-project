@@ -1,6 +1,6 @@
 import { purple } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { Notes } from './pages/notes/Notes';
 import Create from './pages/notes/componets/Create';
 import MyNotes from './pages/notes/componets/MyNotes';
@@ -18,6 +18,7 @@ import { useAuth } from './hooks/useAuth';
 import { removeUser, setUser } from './pages/auth/redux/userSlice';
 import { useDispatch } from 'react-redux';
 import Profile from './pages/profile/Profile';
+import Layout from './layout/Layout';
 
 const theme = createTheme({
   palette: {
@@ -75,21 +76,23 @@ function App() {
           <Route path="signup" element={<SignUp />} />
         </Route>
 
+        <Route path='/' element={<Layout />}>
+          <Route path='/' element={<Navigate to="/home" />} />
+          <Route path='home' element={<Home />} />
 
-        <Route path='home' element={<Home />} />
+          <Route path='resume' element={<Resume />} />
 
-        <Route path='resume' element={<Resume />} />
+          <Route path='notes' element={<Notes />} >
+            <Route path='create' element={<Create />} />
+            <Route path='mynotes' element={<MyNotes />} />
+          </Route>
 
-        <Route path='notes' element={<Notes />} >
-          <Route path='create' element={<Create />} />
-          <Route path='mynotes' element={<MyNotes />} />
+          <Route path='enjoy' element={<Material />} />
+          <Route path='enjoy/redux' element={<Redux />} />
+          <Route path='enjoy/hookform' element={<ReactHookForm />} />
+
+          <Route path='profile' element={<Profile />} />
         </Route>
-
-        <Route path='enjoy' element={<Material />} />
-        <Route path='enjoy/redux' element={<Redux />} />
-        <Route path='enjoy/hookform' element={<ReactHookForm />} />
-
-        <Route path='profile' element={<Profile />} />
 
 
       </Routes>
