@@ -10,7 +10,7 @@ export const signInThunk = createAsyncThunk(
     (data, { dispatch }) => {
         const { email, password, navigate } = data
         const auth = getAuth();
-        dispatch(setAuthStatus(setAuthStatus("loading")))
+        dispatch((setAuthStatus("loading")))
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 dispatch(setUser({

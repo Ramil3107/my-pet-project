@@ -1,9 +1,9 @@
 import { Box, Tab, Tabs } from "@mui/material"
 import React, { useState } from "react"
+import { useSelector } from "react-redux"
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom"
 import { useAuth } from "../../hooks/useAuth"
-import Profile from "../profile/Profile"
-
+import Loader from "../../common/Loader/Loader"
 
 
 
@@ -12,6 +12,7 @@ const Auth = () => {
     const location = useLocation()
     const { isAuth } = useAuth()
     const [value, setValue] = useState('1');
+    const status = useSelector(state => state.user.statuses.authStatus)
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -20,8 +21,8 @@ const Auth = () => {
     return (
         <>
             {
-                isAuth ?
-                    <Profile />
+                status === "loading" ?
+                    <Loader />
                     :
                     <Box
                         component="div"
@@ -52,7 +53,7 @@ const Auth = () => {
                             component="div"
                             align="center"
                         >
-                            <Outlet context={{ setValue }}/>
+                            <Outlet context={{ setValue }} />
                         </Box>
                     </Box>
             }
