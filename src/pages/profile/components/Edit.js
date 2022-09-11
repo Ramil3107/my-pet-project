@@ -1,15 +1,12 @@
-import { getAuth, updateProfile } from "firebase/auth"
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage"
+import { getAuth } from "firebase/auth"
+import { getStorage } from "firebase/storage";
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { setDisplayName, setPhotoUrl } from "../../auth/redux/userSlice";
 import { Box } from "@mui/system"
 import { Avatar, Button, Divider, TextField, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors"
 import { PhotoCamera, Upload } from "@mui/icons-material";
-
-
-
+import { uploadNameThunk, uploadPhotoThunk } from "../../auth/redux/thunks";
 
 
 const Edit = ({
@@ -22,33 +19,27 @@ const Edit = ({
     editMode }) => {
 
 
-    const { currentUser } = getAuth()
-    const auth = getAuth()
     const storage = getStorage()
+    const { currentUser } = getAuth()
     const dispatch = useDispatch()
     const [photo, setPhoto] = useState(null)
     const [name, setName] = useState("")
+    const [number, setNumber] = useState("")
 
-    const uploadPhoto = async (file, userId) => {
-        const fileRef = ref(storage, userId + ".png");
-        const snapshot = await uploadBytes(fileRef, file)
-        const photoURL = await getDownloadURL(fileRef)
-        const photoUpdate = await updateProfile(currentUser, { photoURL: photoURL })
-        dispatch(setPhotoUrl(currentUser.photoURL))
-
-        alert("Uploaded file!")
+    const uploadPhoto = (file, userId, storage, currentUser) => {
+        const data = { file, userId, storage, currentUser }
+        dispatch(uploadPhotoThunk(data))
     }
 
-    const uploadName = async (name) => {
-        const nameUpdate = await updateProfile(currentUser, { displayName: name })
-        dispatch(setDisplayName(currentUser.displayName))
-        console.log(currentUser)
-        alert("Name Changed!")
+    const uploadName = (name, currentUser) => {
+        const data = { name, currentUser }
+        dispatch(uploadNameThunk(data))
     }
 
     const browseFileHandler = (e) => {
         setPhoto(e.target.files[0])
     }
+
 
     return (
         <>
@@ -72,7 +63,7 @@ const Edit = ({
                             <input hidden accept="image/*"
                                 onChange={browseFileHandler} type="file" />
                         </Button>
-                        <Button onClick={() => uploadPhoto(photo, id)} disabled={!photo} size="small" variant="outlined" color="warning" endIcon={<Upload />} aria-label="upload picture" component="label">
+                        <Button onClick={() => uploadPhoto(photo, id, storage, currentUser)} disabled={!photo} size="small" variant="outlined" color="warning" endIcon={<Upload />} aria-label="upload picture" component="label">
                             Upload
                         </Button>
                         <Typography></Typography>
@@ -98,7 +89,7 @@ const Edit = ({
                                 variant="text"
                                 color="warning"
                                 disabled={!name}
-                                onClick={() => uploadName(name)}
+                                onClick={() => uploadName(name, currentUser)}
                             >
                                 Change
                             </Button>

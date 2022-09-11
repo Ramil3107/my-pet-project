@@ -1,6 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../redux/userSlice";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { setDisplayName, setPhotoUrl, setUser } from "../redux/userSlice";
+
 
 
 export const signInThunk = createAsyncThunk(
@@ -37,6 +39,37 @@ export const signUpThunk = createAsyncThunk(
                     id: user.uid
                 }))
             })
+            .catch((error) => {
+                alert(error.message)
+            });
+    }
+)
+
+
+export const uploadPhotoThunk = createAsyncThunk(
+    "user/uploadPhotoThunk",
+    async (data, { dispatch }) => {
+        const { file, userId, storage, currentUser } = data
+        const fileRef = ref(storage, userId + ".png");
+        const snapshot = await uploadBytes(fileRef, file)
+        const photoURL = await getDownloadURL(fileRef)
+        const photoUpdate = await updateProfile(currentUser, { photoURL: photoURL })
+        dispatch(setPhotoUrl(currentUser.photoURL))
+
+        alert("Uploaded file!")
+            .catch((error) => {
+                alert(error.message)
+            });
+    }
+)
+
+export const uploadNameThunk = createAsyncThunk(
+    "user/uploadNameThunk",
+    async (data, { dispatch }) => {
+        const { name, currentUser } = data
+        const nameUpdate = await updateProfile(currentUser, { displayName: name })
+        dispatch(setDisplayName(currentUser.displayName))
+        alert("Name Changed!")
             .catch((error) => {
                 alert(error.message)
             });

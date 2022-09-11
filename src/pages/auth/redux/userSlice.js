@@ -35,6 +35,9 @@ const userSlice = createSlice({
         },
         setDisplayName(state, action) {
             state.displayName = action.payload
+        },
+        setPhoneNumber(state, action) {
+            state.phoneNumber = action.payload
         }
     }
 })
@@ -42,4 +45,4 @@ const userSlice = createSlice({
 
 
 export default userSlice.reducer
-export const { setUser, removeUser, setPhotoUrl, setDisplayName } = userSlice.actions
+export const { setUser, removeUser, setPhotoUrl, setDisplayName, setPhoneNumber } = userSlice.actions
