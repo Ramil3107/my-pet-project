@@ -36,7 +36,12 @@ const Layout = () => {
         <>
             <AppBar elevation={1} position="relative">
                 <Toolbar sx={{ display: "flex", flexWrap: "wrap" }} >
-                    <img style={{ marginRight: "auto" }} width={60} src={paw} />
+                    <img
+                        onClick={() => navigate("home")}
+                        style={{ marginRight: "auto", cursor: "pointer" }}
+                        width={60}
+                        src={paw}
+                    />
                     <Box sx={{ width: "50%", minWidth: 350, display: "flex", justifyContent: "space-around" }}>
                         <Button component={NavLink} to="home" variant="outlined" color="secondary">
                             Home
