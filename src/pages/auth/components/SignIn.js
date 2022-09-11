@@ -1,9 +1,10 @@
 import { NavLink, useNavigate, useOutletContext } from "react-router-dom"
 import Form from "./Form"
 import { useDispatch } from "react-redux";
-import { signInThunk } from "../redux/thunks";
+
 import { Alert, Box, Typography } from "@mui/material";
 import { useState } from "react";
+import { signInThunk } from "../redux/userSlice";
 
 
 

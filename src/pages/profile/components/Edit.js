@@ -6,7 +6,8 @@ import { Box } from "@mui/system"
 import { Avatar, Button, Divider, TextField, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors"
 import { PhotoCamera, Upload } from "@mui/icons-material";
-import { uploadNameThunk, uploadPhotoThunk } from "../../auth/redux/thunks";
+import { uploadNameThunk, uploadPhotoThunk } from "../../auth/redux/userSlice";
+
 
 
 const Edit = ({

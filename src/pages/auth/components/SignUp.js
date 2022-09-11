@@ -2,8 +2,8 @@ import { NavLink, useOutletContext } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form";
 import { useDispatch } from "react-redux";
-import { setUser } from "../redux/userSlice";
-import { signUpThunk } from "../redux/thunks";
+import { setUser, signUpThunk } from "../redux/userSlice";
+
 import { Box, Typography } from "@mui/material";
 
 
