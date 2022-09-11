@@ -1,5 +1,5 @@
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@mui/icons-material"
-import { AppBar, Avatar, Drawer, List, ListItem, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material"
+import { AppBar, Avatar, Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Paper, Toolbar, Typography } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { format } from "date-fns"
 import { useDispatch, useSelector } from "react-redux"
@@ -12,33 +12,17 @@ const classes = {
     page: {
         background: "#f9f9f9",
         width: "100%",
-        padding: 20,
-        paddingTop: 110
-    },
-    drawer: {
-        width: DRAWER_WIDTH
-    },
-    drawerPaper: {
-        width: DRAWER_WIDTH
+        padding: 50,
     },
     root: {
-        display: "flex"
+        display: "flex",
+        minHeight: "100vh"
     },
     active: {
         backgroundColor: "#f4f4f4"
     },
-    appbar: {
-        width: `calc(100% - ${DRAWER_WIDTH}px)`,
-        height: 65
-    },
-    date: {
-        flexGrow: 1
-    },
-    avatar: {
-        marginLeft: 2,
-        backgroundColor: blue[200]
-    }
 }
+
 const sideDrawerItems = [
     {
         text: 'My Notes',
@@ -74,47 +58,20 @@ export const Notes = () => {
 
 
     return (
-        <div style={classes.root}>
+        <Box style={classes.root}>
 
-
-            {/* App Bar */}
-
-            <AppBar
-                sx={classes.appbar}
-                elevation={1}
-            >
-                <Toolbar>
-                    <Typography sx={classes.date}>
-                        Today is {format(new Date(), "do MMMM Y")}
-                    </Typography>
-                    <Typography>
-                        UserName
-                    </Typography>
-                    <Avatar sx={classes.avatar}>UA</Avatar>
-                </Toolbar>
-            </AppBar>
-
-            {/* Side Drawer */}
-
-            <Drawer
+            <Paper
+                elevation={0}
+                square
                 sx={{
-                    width: DRAWER_WIDTH,
-                    flexShrink: 0,
-                    '& .MuiDrawer-paper': {
-                        width: DRAWER_WIDTH,
-                        boxSizing: 'border-box',
-                    },
+                    width: 300,
+                    pt: 3,
+                    border: "0.5px grey solid",
+                    borderBottom: "0px",
+                    borderLeft: "0px",
+                    borderTop: "0px"
                 }}
-                variant="permanent"
-                anchor="left"
             >
-
-                <div>
-                    <Typography variant="h5" sx={{ marginLeft: 1 }}>
-                        Pet Notes
-                    </Typography>
-                </div>
-
                 <List>
                     {
                         sideDrawerItems.map(item => (
@@ -131,15 +88,12 @@ export const Notes = () => {
                     }
 
                 </List>
-
-            </Drawer>
-
-            {/* Pages */}
+            </Paper>
 
             <div style={classes.page}>
                 <Outlet context={{ onCreateNote, showNotes, onDeleteNote, notes }} />
             </div>
 
-        </div>
+        </Box>
     )
 }
