@@ -11,7 +11,7 @@ import Edit from "./components/Edit"
 
 
 const Profile = () => {
-    const { email, id, photoURL, displayName, phoneNumber } = useAuth()
+    const { email, id, photoURL, displayName, creationTime } = useAuth()
     const dispatch = useDispatch()
     const auth = getAuth()
 
@@ -27,7 +27,7 @@ const Profile = () => {
         defaultAvatar,
         setEditMode,
         logoutHandler,
-        phoneNumber,
+        creationTime,
         email,
         id,
         photoURL,
@@ -38,7 +38,6 @@ const Profile = () => {
         displayName,
         defaultAvatar,
         setEditMode,
-        phoneNumber,
         email,
         id,
         photoURL,

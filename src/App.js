@@ -54,7 +54,7 @@ function App() {
           email: userAuth.email,
           token: userAuth.accessToken,
           id: userAuth.uid,
-          phoneNumber: userAuth.phoneNumber,
+          creationTime: userAuth.metadata.creationTime,
         }))
       } else {
         dispatch(removeUser())

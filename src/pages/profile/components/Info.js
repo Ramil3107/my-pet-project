@@ -1,10 +1,12 @@
 import { Avatar, Button, Divider, Typography } from "@mui/material"
 import { blue } from "@mui/material/colors"
 import { Box } from "@mui/system"
+import { getAuth } from "firebase/auth"
 
 
 
-const Info = ({ displayName, defaultAvatar, setEditMode, logoutHandler, phoneNumber, email, id, photoURL, editMode }) => {
+const Info = ({ displayName, defaultAvatar, setEditMode, logoutHandler, creationTime, email, id, photoURL, editMode }) => {
+
     const fields = [
         {
             label: "Nickname: ",
@@ -17,9 +19,9 @@ const Info = ({ displayName, defaultAvatar, setEditMode, logoutHandler, phoneNum
             empty: "Add your email",
         },
         {
-            label: "Phone Number: ",
-            value: phoneNumber,
-            empty: "Add your phone number",
+            label: "Account Creation Time: ",
+            value: creationTime,
+            empty: "Account Creation Time",
         },
     ]
     return (

@@ -13,7 +13,7 @@ const Edit = ({
     displayName,
     defaultAvatar,
     setEditMode,
-    phoneNumber,
+    creationTime,
     id,
     photoURL,
     editMode }) => {

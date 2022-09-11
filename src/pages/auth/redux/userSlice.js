@@ -8,7 +8,7 @@ const initialState = {
     id: null,
     photoURL: null,
     displayName: null,
-    phoneNumber: null,
+    creationTime: null,
 }
 
 const userSlice = createSlice({
@@ -21,7 +21,7 @@ const userSlice = createSlice({
             state.email = action.payload.email;
             state.token = action.payload.token;
             state.id = action.payload.id;
-            state.phoneNumber = action.payload.phoneNumber;
+            state.creationTime = action.payload.creationTime;
         },
         removeUser(state) {
             state.displayName = null
@@ -36,8 +36,8 @@ const userSlice = createSlice({
         setDisplayName(state, action) {
             state.displayName = action.payload
         },
-        setPhoneNumber(state, action) {
-            state.phoneNumber = action.payload
+        setCreationTime(state, action) {
+            state.creationTime = action.payload
         }
     }
 })
@@ -45,4 +45,4 @@ const userSlice = createSlice({
 
 
 export default userSlice.reducer
-export const { setUser, removeUser, setPhotoUrl, setDisplayName, setPhoneNumber } = userSlice.actions
+export const { setUser, removeUser, setPhotoUrl, setDisplayName, setCreationTime } = userSlice.actions

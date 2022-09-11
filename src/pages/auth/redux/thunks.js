@@ -18,7 +18,7 @@ export const signInThunk = createAsyncThunk(
                     email: user.email,
                     token: user.accessToken,
                     id: user.uid,
-                    phoneNumber: user.phoneNumber,
+                    creationTime: user.metadata.creationTime,
                 }))
             })
             .catch((error) => {
