@@ -33,8 +33,9 @@ export const signInThunk = createAsyncThunk(
 export const signUpThunk = createAsyncThunk(
     "user/signUpThunk",
     (data, { dispatch }) => {
-        const { email, password } = data
+        const { email, password, navigate } = data
         const auth = getAuth();
+        dispatch((setAuthStatus("loading")))
         createUserWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 dispatch(setUser({
@@ -42,8 +43,12 @@ export const signUpThunk = createAsyncThunk(
                     token: user.accessToken,
                     id: user.uid
                 }))
+                dispatch(setAuthStatus("resolved"))
+                navigate("/profile")
             })
             .catch((error) => {
+                dispatch(setAuthStatus("error"))
+                navigate("/auth/signin")
                 alert(error.message)
             });
     }
@@ -127,6 +132,9 @@ const userSlice = createSlice({
     },
     extraReducers: {
         [signInThunk.rejected]: (state) => {
+            state.statuses.authStatus = "rejected"
+        },
+        [signUpThunk.rejected]: (state) => {
             state.statuses.authStatus = "rejected"
         }
     }

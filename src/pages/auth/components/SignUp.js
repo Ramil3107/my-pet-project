@@ -1,4 +1,4 @@
-import { NavLink, useOutletContext } from "react-router-dom"
+import { NavLink, useNavigate, useOutletContext } from "react-router-dom"
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import Form from "./Form";
 import { useDispatch } from "react-redux";
@@ -11,9 +11,10 @@ const SignUp = () => {
 
     const { setValue } = useOutletContext()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const SignUpHandler = (email, password) => {
-        const data = { email, password }
+        const data = { email, password, navigate }
         dispatch(signUpThunk(data))
     }
 
