@@ -7,6 +7,7 @@ admin.initializeApp()
 const app = express();
 app.use(cors());
 
+//Notes
 
 app.get("/", async (req, res) => {
     const snapshot = await admin.firestore().collection("notes").get()
@@ -39,9 +40,10 @@ app.delete("/:id", async (req, res) => {
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 
+
 exports.notes = functions.https.onRequest(app);
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
-    functions.logger.info("Hello logs!", { structuredData: true });
-    response.send("Hello from Firebase!");
+exports.enjoy = functions.https.onRequest((request, response) => {
+    functions.logger.info("Enjoy!", { structuredData: true });
+    response.send({ funFieldText: "Hey, I'm a traveler text!" });
 });
