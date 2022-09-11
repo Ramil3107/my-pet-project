@@ -1,4 +1,4 @@
-import { AppBar, Avatar, Box, Button, Menu, MenuItem, Toolbar } from "@mui/material"
+import { AppBar, Avatar, Box, Button, Menu, MenuItem, Toolbar, Typography } from "@mui/material"
 import { getAuth } from "firebase/auth"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
@@ -12,7 +12,7 @@ import { removeUser } from "../pages/auth/redux/userSlice"
 
 const Layout = () => {
 
-    const { photoURL } = useAuth()
+    const { photoURL, displayName } = useAuth()
     const [anchorEl, setAnchorEl] = useState(null);
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -59,17 +59,20 @@ const Layout = () => {
                             Enjoy
                         </Button>
                     </Box>
-                    <Avatar
-                        id="basic-avatar"
-                        aria-controls={open ? 'basic-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                        src={photoURL}
-                        sx={{ ml: "auto", cursor: "pointer" }}
-                    >
-                        A
-                    </Avatar>
+                    <Box sx={{ display:"flex",alignItems:"center" ,ml: "auto" }}>
+                        <Typography sx={{mr:3}}>Welcome, {displayName || "Anonim"}</Typography>
+                        <Avatar
+                            id="basic-avatar"
+                            aria-controls={open ? 'basic-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                            src={photoURL}
+                            sx={{ ml: "auto", cursor: "pointer" }}
+                        >
+                            A
+                        </Avatar>
+                    </Box>
                     <Menu
                         id="basic-menu"
                         anchorEl={anchorEl}
