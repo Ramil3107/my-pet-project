@@ -43,7 +43,7 @@ const Edit = ({
 
     return (
         <>
-            <Box sx={{ width: "100%", mt: 3, ml: 1, mr: 1, }}>
+            <Box sx={{ width: "100%", mt: 3 }}>
                 <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
                     <Avatar sx={{ width: 150, height: 150 }} src={photoURL || defaultAvatar} />
                     <Box sx={{ ml: 3 }}>
