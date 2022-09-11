@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { signInThunk } from "./thunks";
 
 
 
@@ -9,6 +10,9 @@ const initialState = {
     photoURL: null,
     displayName: null,
     creationTime: null,
+    statuses: {
+        authStatus: null
+    }
 }
 
 const userSlice = createSlice({
@@ -38,6 +42,14 @@ const userSlice = createSlice({
         },
         setCreationTime(state, action) {
             state.creationTime = action.payload
+        },
+        setAuthStatus(state, action) {
+            state.statuses.authStatus = action.payload
+        }
+    },
+    extraReducers: {
+        [signInThunk.rejected]: (state) => {
+            state.statuses.authStatus = "rejected"
         }
     }
 })
@@ -45,4 +57,4 @@ const userSlice = createSlice({
 
 
 export default userSlice.reducer
-export const { setUser, removeUser, setPhotoUrl, setDisplayName, setCreationTime } = userSlice.actions
+export const { setUser, removeUser, setPhotoUrl, setDisplayName, setCreationTime, setAuthStatus } = userSlice.actions

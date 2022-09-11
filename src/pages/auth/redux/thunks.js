@@ -1,15 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { setDisplayName, setPhotoUrl, setUser } from "../redux/userSlice";
+import { setAuthStatus, setDisplayName, setPhotoUrl, setUser } from "../redux/userSlice";
 
 
 
 export const signInThunk = createAsyncThunk(
     "user/signInThunk",
     (data, { dispatch }) => {
-        const { email, password } = data
+        const { email, password, navigate } = data
         const auth = getAuth();
+        dispatch(setAuthStatus(setAuthStatus("loading")))
         signInWithEmailAndPassword(auth, email, password)
             .then(({ user }) => {
                 dispatch(setUser({
@@ -20,8 +21,12 @@ export const signInThunk = createAsyncThunk(
                     id: user.uid,
                     creationTime: user.metadata.creationTime,
                 }))
+                dispatch(setAuthStatus("resolved"))
+                navigate("/profile")
             })
             .catch((error) => {
+                dispatch(setAuthStatus("error"))
+                navigate("/auth/signin")
                 alert(error.message)
             });
     }

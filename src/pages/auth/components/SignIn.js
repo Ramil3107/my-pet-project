@@ -1,4 +1,4 @@
-import { NavLink, useOutletContext } from "react-router-dom"
+import { NavLink, useNavigate, useOutletContext } from "react-router-dom"
 import Form from "./Form"
 import { useDispatch } from "react-redux";
 import { signInThunk } from "../redux/thunks";
@@ -11,9 +11,10 @@ const SignIn = () => {
 
     const { setValue } = useOutletContext()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const signInHandler = (email, password) => {
-        const data = { email, password }
+        const data = { email, password, navigate }
         dispatch(signInThunk(data))
     }
 
