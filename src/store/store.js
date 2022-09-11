@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import userSlice from "../pages/auth/redux/userSlice";
 import enjoySlice from "../pages/enjoy/redux/enjoySlice";
 import homeSlice from "../pages/home/redux/homeSlice";
@@ -10,8 +10,8 @@ export const store = configureStore({
         user: userSlice,
         home: homeSlice,
         enjoy: enjoySlice,
-    }
+    },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false,
+    })
 })
-
-
-window.store = store.getState()
