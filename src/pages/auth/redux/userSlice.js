@@ -58,16 +58,18 @@ export const signUpThunk = createAsyncThunk(
 export const uploadPhotoThunk = createAsyncThunk(
     "user/uploadPhotoThunk",
     async (data, { dispatch }) => {
+        dispatch(setPhotoUploadStatus("loading"))
         const { file, userId, storage, currentUser } = data
         const fileRef = ref(storage, userId + ".png");
         const snapshot = await uploadBytes(fileRef, file)
         const photoURL = await getDownloadURL(fileRef)
         const photoUpdate = await updateProfile(currentUser, { photoURL: photoURL })
         dispatch(setPhotoUrl(currentUser.photoURL))
-
+        dispatch(setPhotoUploadStatus("resolved"))
         alert("Uploaded file!")
             .catch((error) => {
                 alert(error.message)
+                dispatch(setPhotoUploadStatus("error"))
             });
     }
 )
@@ -94,7 +96,8 @@ const initialState = {
     displayName: null,
     creationTime: null,
     statuses: {
-        authStatus: null
+        authStatus: null,
+        photoUploadStatus: null,
     }
 }
 
@@ -128,6 +131,9 @@ const userSlice = createSlice({
         },
         setAuthStatus(state, action) {
             state.statuses.authStatus = action.payload
+        },
+        setPhotoUploadStatus(state, action) {
+            state.statuses.photoUploadStatus = action.payload
         }
     },
     extraReducers: {
@@ -144,4 +150,4 @@ const userSlice = createSlice({
 
 
 export default userSlice.reducer
-export const { setUser, removeUser, setPhotoUrl, setDisplayName, setCreationTime, setAuthStatus } = userSlice.actions
+export const { setUser, removeUser, setPhotoUrl, setDisplayName, setCreationTime, setAuthStatus, setPhotoUploadStatus } = userSlice.actions

@@ -1,14 +1,13 @@
 import { getAuth } from "firebase/auth"
 import { getStorage } from "firebase/storage";
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Box } from "@mui/system"
 import { Avatar, Button, Divider, TextField, Typography } from "@mui/material";
 import { blue } from "@mui/material/colors"
 import { PhotoCamera, Upload } from "@mui/icons-material";
 import { uploadNameThunk, uploadPhotoThunk } from "../../auth/redux/userSlice";
-
-
+import { LoadingButton } from "@mui/lab";
 
 const Edit = ({
     displayName,
@@ -25,7 +24,7 @@ const Edit = ({
     const dispatch = useDispatch()
     const [photo, setPhoto] = useState(null)
     const [name, setName] = useState("")
-    const [number, setNumber] = useState("")
+    const status = useSelector(state => state.user.statuses.photoUploadStatus)
 
     const uploadPhoto = (file, userId, storage, currentUser) => {
         const data = { file, userId, storage, currentUser }
@@ -61,13 +60,27 @@ const Edit = ({
                         </Button>
                         <Button sx={{ mr: 0.5 }} size="small" variant="outlined" color="info" endIcon={<PhotoCamera />} aria-label="upload picture" component="label">
                             Select file
-                            <input hidden accept="image/*"
-                                onChange={browseFileHandler} type="file" />
+                            <input
+                                hidden accept="image/*"
+                                onChange={browseFileHandler} type="file"
+                            />
                         </Button>
-                        <Button onClick={() => uploadPhoto(photo, id, storage, currentUser)} disabled={!photo} size="small" variant="outlined" color="warning" endIcon={<Upload />} aria-label="upload picture" component="label">
+                        <LoadingButton
+                            onClick={() => uploadPhoto(photo, id, storage, currentUser)}
+                            disabled={!photo}
+                            loading={status === "loading"}
+                            size="small"
+                            variant="outlined"
+                            color="warning"
+                            endIcon={<Upload />}
+                            aria-label="upload picture"
+                            component="label"
+                        >
                             Upload
-                        </Button>
-                        <Typography></Typography>
+                        </LoadingButton>
+                        {
+                            photo && <Typography sx={{ ml: 12, mt: 1 }} variant="subtitle2">{photo.name}</Typography>
+                        }
                     </Box>
                 </Box>
 
