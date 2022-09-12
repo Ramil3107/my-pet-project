@@ -4,9 +4,11 @@ import { instance } from "../../../api/api";
 
 export const getFunFieldText = createAsyncThunk(
     "enjoy/getFunFieldText",
-    (_, { dispatch }) => instance.get("enjoy")
-        .then(response => response.data)
-        .then(data => dispatch(setFunFieldText({ text: data.funFieldText })))
+    async (_, { dispatch }) => {
+        const response = await instance.get("enjoy")
+        const data = response.data
+        dispatch(setFunFieldText({ text: data.funFieldText }))
+    }
 )
 
 const initialState = {
