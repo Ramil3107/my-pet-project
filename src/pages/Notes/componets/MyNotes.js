@@ -4,12 +4,14 @@ import { NoteCard } from "./NoteCard"
 import Masonry from "react-masonry-css"
 import styles from "../Notes.module.css"
 import { useOutletContext } from "react-router-dom"
+import { useSelector } from "react-redux"
+import Loader from "../../../common/Loader/Loader"
 
 
 function MyNotes() {
 
     const { notes, showNotes, onDeleteNote } = useOutletContext()
-
+    const status = useSelector(state => state.notes.status)
 
     useEffect(() => {
         showNotes()
@@ -28,21 +30,29 @@ function MyNotes() {
     };
 
     return (
-        <Container>
-            <Grid container spacing={3}>
-                <Masonry
-                    breakpointCols={breakpoints}
-                    className={styles.myMasonryGrid}
-                    columnClassName={styles.myMasonryGridColumn}
-                >
-                    {notes.map(note => (
-                        <div key={note.id}>
-                            <NoteCard note={note} handleDelete={() => handleDelete(note.id)} />
-                        </div>
-                    ))}
-                </Masonry>
-            </Grid>
-        </Container>
+        <>
+            {
+                status == "loading" ?
+                    <Loader />
+                    :
+                    <Container>
+                        <Grid container spacing={3}>
+                            <Masonry
+                                breakpointCols={breakpoints}
+                                className={styles.myMasonryGrid}
+                                columnClassName={styles.myMasonryGridColumn}
+                            >
+                                {notes.map(note => (
+                                    <div key={note.id}>
+                                        <NoteCard note={note} handleDelete={() => handleDelete(note.id)} />
+                                    </div>
+                                ))}
+                            </Masonry>
+                        </Grid>
+                    </Container>
+            }
+
+        </>
     )
 
 }

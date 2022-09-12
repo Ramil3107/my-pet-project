@@ -7,8 +7,10 @@ export const getNotesThunk = createAsyncThunk(
     "notes/getNotesThunk",
     async (_, { dispatch }) => {
         try {
+            dispatch(setStatus("loading"))
             let data = await notesAPI.getNotes()
             dispatch(setNotes({ data }))
+            dispatch(setStatus("resolved"))
         } catch (error) {
             alert(error)
         }
@@ -32,7 +34,8 @@ export const deleteNoteThunk = createAsyncThunk(
 
 
 const initialState = {
-    myNotes: []
+    myNotes: [],
+    status: null
 }
 
 const notesSlice = createSlice({
@@ -44,12 +47,14 @@ const notesSlice = createSlice({
         },
         deleteNote(state, action) {
             state.myNotes = state.myNotes.filter(note => note.id != action.payload.id)
+        },
+        setStatus(state, action) {
+            state.status = action.payload
         }
-
     }
 })
 
 
 
 export default notesSlice.reducer
-export const { setNotes, deleteNote } = notesSlice.actions
+export const { setNotes, deleteNote, setStatus } = notesSlice.actions
