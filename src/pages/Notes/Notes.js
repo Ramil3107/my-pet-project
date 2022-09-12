@@ -1,11 +1,9 @@
 import { AddCircleOutlineOutlined, SubjectOutlined } from "@mui/icons-material"
-import { AppBar, Avatar, Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Paper, Toolbar, Typography } from "@mui/material"
-import { blue } from "@mui/material/colors"
-import { format } from "date-fns"
+import { Box, List, ListItem, ListItemIcon, ListItemText, Paper } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import { notesAPI } from "./api/notesAPI"
-import { deleteNoteThunk, getNotesThunk } from "./redux/thunks"
+import { deleteNoteThunk, getNotesThunk } from "./redux/notesSlice"
 
 const DRAWER_WIDTH = 240
 const classes = {

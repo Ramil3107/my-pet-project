@@ -1,5 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { notesAPI } from "../api/notesAPI";
+import { notesAPI } from "../api/notesAPI"
+
+
+
+export const getNotesThunk = createAsyncThunk(
+    "notes/getNotesThunk",
+    async (_, { dispatch }) => {
+        try {
+            let data = await notesAPI.getNotes()
+            dispatch(setNotes({ data }))
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+)
+
+
+export const deleteNoteThunk = createAsyncThunk(
+    "notes/deleteNoteThunk",
+    async (id, { dispatch }) => {
+        try {
+            await notesAPI.deleteNote(id)
+            dispatch(deleteNote({ id }))
+        } catch (error) {
+            alert(error)
+        }
+    }
+)
+
+
 
 const initialState = {
     myNotes: []
