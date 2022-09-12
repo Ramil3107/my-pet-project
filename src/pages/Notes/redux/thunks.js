@@ -6,15 +6,26 @@ import { deleteNote, setNotes } from "./notesSlice"
 
 export const getNotesThunk = createAsyncThunk(
     "notes/getNotesThunk",
-    (_, { dispatch }) => notesAPI.getNotes()
-        .then(data => dispatch(setNotes({ data })))
+    async (_, { dispatch }) => {
+        try {
+            let data = await notesAPI.getNotes()
+            dispatch(setNotes({ data }))
+        } catch (error) {
+            alert(error)
+        }
+    }
+
 )
 
 
 export const deleteNoteThunk = createAsyncThunk(
     "notes/deleteNoteThunk",
-    (id, { dispatch }) => {
-        notesAPI.deleteNote(id)
-        dispatch(deleteNote({ id }))
+    async (id, { dispatch }) => {
+        try {
+            await notesAPI.deleteNote(id)
+            dispatch(deleteNote({ id }))
+        } catch (error) {
+            alert(error)
+        }
     }
 )
