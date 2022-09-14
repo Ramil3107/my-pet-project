@@ -1,3 +1,4 @@
+import { LoadingButton } from "@mui/lab"
 import { Button, Divider, TextField, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import { useEffect, useState } from "react"
@@ -46,7 +47,7 @@ const styles = {
 
 
 const Redux = () => {
-    const { dummyFieldValue, fieldValueFromBack } = useSelector(state => state.enjoy)
+    const { dummyFieldValue, fieldValueFromBack, loading } = useSelector(state => state.enjoy)
     const dispatch = useDispatch()
     const [localStateValue, setLocalStateValue] = useState("")
     const [stateValue, setStateValue] = useState("")
@@ -157,13 +158,14 @@ const Redux = () => {
                             label="My text saw backend and state!"
                             sx={styles.textFieldOutlined}
                         />
-                        <Button
+                        <LoadingButton
                             onClick={() => dispatch(getFunFieldText())}
                             variant="contained"
                             sx={{ width: "30%", height: 50, mt: 5, ml: 3 }}
+                            loading={loading}
                         >
                             Get Text
-                        </Button>
+                        </LoadingButton>
                     </Box>
 
 
@@ -181,7 +183,7 @@ const Redux = () => {
 
             <Divider variant="middle" sx={{ bgcolor: "white", width: "50%", mt: 10, mb: 10 }} />
 
-            <Box sx={{ width: "40%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems:"center"}}>
+            <Box sx={{ width: "40%", display: "flex", flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
                 <Button
                     variant="outlined"
                     sx={{ height: 50 }}

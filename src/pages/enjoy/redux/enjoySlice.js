@@ -1,15 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { instance } from "../../../api/api";
+import * as axios from "axios";
 
 
 export const getFunFieldText = createAsyncThunk(
     "enjoy/getFunFieldText",
     async (_, { dispatch }) => {
         try {
-            const response = await instance.get("enjoy")
-            const data = response.data
+            dispatch(setFunLoading(true))
+            const response = await axios.get("https://6321d90d82f8687273baba5a.mockapi.io/enjoy/funFieldText")
+            const data = response.data[0]
             dispatch(setFunFieldText({ text: data.funFieldText }))
+            dispatch(setFunLoading(false))
         } catch (error) {
+            dispatch(setFunLoading(false))
             alert(error)
         }
     }
@@ -17,7 +20,8 @@ export const getFunFieldText = createAsyncThunk(
 
 const initialState = {
     dummyFieldValue: "Hi, I'm from redux state",
-    fieldValueFromBack: "Initial state"
+    fieldValueFromBack: "Initial state",
+    loading: false
 }
 
 const enjoySlice = createSlice({
@@ -30,10 +34,13 @@ const enjoySlice = createSlice({
         setFunFieldText(state, action) {
             state.fieldValueFromBack = action.payload.text
         },
+        setFunLoading(state, action) {
+            state.loading = action.payload
+        },
     }
 })
 
 
 
 export default enjoySlice.reducer
-export const { setDummyFieldValue, setFunFieldText } = enjoySlice.actions
+export const { setDummyFieldValue, setFunFieldText, setFunLoading } = enjoySlice.actions
