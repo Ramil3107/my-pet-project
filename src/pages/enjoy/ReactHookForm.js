@@ -86,7 +86,7 @@ const ReactHookForm = () => {
             <Box>
                 <Typography variant="h5" color="primary" sx={styles.elementsTitle}>Simple Form</Typography>
                 <Typography sx={{ width: "70%" }} variant="subtitle1" color="primary">
-                    This example show us a simple usually use form using local state. I just wanna show you main different between "simple form" and react hook form. This main difference it's number of renders. So you can see a number of renders in counter bellow.
+                This example shows us a simple usual usage form utilizing the local state. I just wanna show you the main difference between "simple form" and react hook form. This main difference has a number of renders. So you can see a number of renders in the counter below.
                 </Typography>
             </Box>
 

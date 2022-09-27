@@ -65,7 +65,7 @@ const Redux = () => {
                 <Typography color="primary" p={1} variant="subtitle1" >
                     What is Redux?
                     <br />
-                    Redux is simply a store to store the state of the variables in your app. Redux creates a process and procedures to interact with the store so that components will not just update or read the store randomly. Similar to the bank. It does not mean because you have money in the bank that you can go anytime, open the vault, and take money. You have to go through certain steps to withdrawal money.
+                    Redux is simply a storage to keep the state of the variables in your app. Redux creates a process and procedures to interact with the store so that components will not just update or read the store randomly. Similar to the bank example. It does not mean due to the fact that you have money in the bank, you can go there anytime, open the vault, and take the money. You have to go through certain steps to withdraw it.
                 </Typography>
             </Box>
 
@@ -73,7 +73,7 @@ const Redux = () => {
             <Box sx={{ mb: 10 }}>
                 <Typography variant="h5" color="primary" sx={styles.elementsTitle}>Let's start with local state</Typography>
                 <Typography sx={{ width: "70%" }} variant="subtitle1" color="primary">
-                    Local state is perhaps the easiest kind of state to manage in React, considering there are so many tools built into the core React library for managing it.
+                The Local state is, perhaps, the easiest kind of state to manage in React, considering there are so many tools built into the core React library for managing it.
                 </Typography>
 
                 <Box sx={{ width: "70%" }}>
@@ -103,7 +103,7 @@ const Redux = () => {
             <Box>
                 <Typography variant="h5" color="primary" sx={styles.elementsTitle}>Let's try same things with Redux</Typography>
                 <Typography sx={{ width: "70%" }} variant="subtitle1" color="primary">
-                    So, how it's work? You can write some text and click dispatch button. Dispatcher "send" action creator which include action type and payload (optional). Then reducer make a immutable changes with state and return new state.
+                So, how does it work? You can write some text and click the dispatch button. Dispatcher "sends" action creator which include action type and payload (optional). Then reducer makes  immutable changes with state and returns to the new state.
                 </Typography>
 
                 <Box sx={{ width: "70%", mb: 10 }}>
@@ -143,7 +143,7 @@ const Redux = () => {
             <Box>
                 <Typography variant="h5" color="primary" sx={styles.elementsTitle}>Redux Thunk</Typography>
                 <Typography sx={{ width: "70%" }} variant="subtitle1" color="primary">
-                    Redux Thunk is middleware that allows you to return functions, rather than just actions, within Redux. This allows for delayed actions, including working with promises. One of the main use cases for this middleware is for handling actions that might not be synchronous, for example, using axios to send a GET request.
+                Redux Thunk is the middleware that allows you to return to functions, rather than just actions, within Redux. This allows us to manage delayed actions, including working with promises. One of the main use cases for this middleware is for handling actions that might not be synchronous, for example, using axios to send a GET request.
                 </Typography>
 
                 <Box sx={{ width: "70%" }}>

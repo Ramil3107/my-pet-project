@@ -1,5 +1,5 @@
 import { GitHub, LinkedIn, LocationOn } from "@mui/icons-material"
-import { Avatar, Divider, Grid, List, ListItem, Paper, SvgIcon, Typography } from "@mui/material"
+import { Avatar, Button, Divider, Grid, List, ListItem, Paper, SvgIcon, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import resumeAvatar from "../../assets/resumeAvatar.JPG"
 import html from "../../assets/iconsPNG/html.png"
@@ -16,9 +16,7 @@ import firebaseIcon from "../../assets/iconsPNG/firebaseIcon.png"
 import socialShare from "../../assets/iconsPNG/socialShare.png"
 import paw from "../../assets/iconsPNG/paw.png"
 import khnadu from "../../assets/iconsPNG/khnadu.png"
-
-
-
+import { Link } from "react-router-dom"
 
 const Resume = () => {
 
@@ -95,31 +93,34 @@ const Resume = () => {
         {
             src: socialShare,
             projectName: "Social Network",
-            projectLink: "social-media.com",
+            projectLink: "https://ramil3107.github.io/React-social-network",
+            projectLinkName: "show me",
             projectNote: "My first project",
-            projectDescription: "During 3 years working as a freelance designer, I get a lot of experience helping the branding process of several companies, from small companies to large companies, such as energy companies.",
+            projectDescription: "This project is the final work step on the React: Way of the Samurai course, which includes 100 lessons. While taking this course, I learned React, Redux, Flux Architecture, etc. This project is not about design, it acts as a kind of playground in which I’ve implemented the material studied. The back-end is provided by the course author.",
         },
         {
             src: paw,
             projectName: "My Pet Project",
-            projectLink: "my-pet-project.com",
+            projectLink: "https://ramil3107.github.io/my-pet-project",
+            projectLinkName: "show me",
             projectNote: "My second project",
-            projectDescription: "5 years as an educator at Al-Fatah Elementary School apart from making the teaching and learning       process fun, I have been the chairman of several events both offline and online, such as celebrations of national."
+            projectDescription: "My second pet project, which I’ve written based on the technologies I've learned. About 90 percent of the user interface is written using the Material library. I also used Redax Toolkit for state management.I've gained some experience with Firebase by implementing its authentication tools."
         },
         {
             src: reactNative,
-            projectName: "React Native ",
-            projectLink: "react-native.com",
+            projectName: "Recipes (React Native)",
+            projectLink: "https://github.com/Ramil3107/recipes-react-native",
+            projectLinkName: "show me",
             projectNote: "My third project",
-            projectDescription: "During 3 years working as a freelance designer, I get a lot of experience helping the branding process of several companies, from small companies to large companies, such as energy companies.",
+            projectDescription: "During the development of this application, I got acquainted with React Native. Installed a 'naked' setup NOT using Expo GO. I got acquainted with the features of navigation and the React Navigation library. I also installed the React Elements library.This is a simple application with 3 screens which include: the main recipe screen, favorite recipes and information about a specific recipe. Implemented logic with likes and searches by name. There is also a tab bar.",
         },
     ]
 
-    const advantagesItem = ["I have three pet projects", "Studied with a mentor", "Have little commercial experience"]
+    const advantagesItem = ["I have three interesting pet projects", "I studied with a mentor", "I have little commercial experience as for now", "I completed a 100-lesson React course"]
     const languagesItem = ["English", "Ukrainian", "Russian", "Azerbaijani"]
 
     return (
-        <Box align="center" sx={{ }}>
+        <Box align="center" sx={{}}>
 
             <Box sx={{ width: "65%", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center", mt: 5 }}>
 
@@ -143,7 +144,9 @@ const Resume = () => {
                         sx={{ ml: 0, fontWeight: "500" }}
                         align="left"
                     >
-                        I have 3 years experience as a freelance logo designer. With ideas and analysis of customer data, I can help maximize their branding process.
+                        My primary skill set includes HTML5, CSS, JavaScript, React, React Native.
+                        I also have some pet project on Vanilla JS, React JS, React Native (see more on my GitHub)
+
                     </Typography>
 
                     <Typography
@@ -152,7 +155,7 @@ const Resume = () => {
                         align="left"
                     >
                         <LocationOn color="secondary" fontSize="medium" />
-                        Surabaya City, East Java, Indonesia
+                        Kharkiv, Ukraine
                         <LinkedIn
                             onClick={() => window.open('https://www.linkedin.com/in/ramil-abbasov-a1b40324a/', '_blank')}
                             sx={styles.socialSmallIcons}
@@ -250,8 +253,15 @@ const Resume = () => {
                                     variant="h6"
                                     color="secondary"
                                     align="left"
+                                ><Button
+                                    onClick={() => window.open(`${item.projectLink}`, '_blank')}
+                                    sx={{ p: 0 }}
+                                    color="secondary"
+                                    variant="text"
+                                    size="large"
                                 >
-                                    {item.projectLink}
+                                        {item.projectLinkName}
+                                    </Button>
                                 </Typography>
                                 <Typography
                                     variant="subtitle1"
@@ -320,7 +330,7 @@ const Resume = () => {
 
                 </Box>
 
-                <Box sx={{ display: 'flex', flexWrap: "wrap", width: "100%", mt: 5, p: 5, mb:5,color: "white", bgcolor: "rgb(50,64,108)" }}>
+                <Box sx={{ display: 'flex', flexWrap: "wrap", width: "100%", mt: 5, p: 5, mb: 5, color: "white", bgcolor: "rgb(50,64,108)" }}>
                     <Box sx={{ mr: 25, width: 300 }}>
                         <Typography
                             fontWeight="medium"
