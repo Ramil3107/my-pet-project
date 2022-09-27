@@ -1,4 +1,6 @@
 # My Pet Project
+My second pet project, which I’ve written based on the technologies I've learned. About 90 percent of the user interface is written using the Material library. I also used Redax Toolkit for state management.
+I've gained some experience with Firebase by implementing its authentication tools.
 
 
 ## Home
