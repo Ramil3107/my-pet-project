@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/my-pet-project/static/css/main.ac20eef8.css",
-    "main.js": "/my-pet-project/static/js/main.e16b06db.js",
+    "main.js": "/my-pet-project/static/js/main.175b7bc8.js",
     "static/media/enjoyItImg.png": "/my-pet-project/static/media/enjoyItImg.39131191e1e22a90922d.png",
     "static/media/profileImg.png": "/my-pet-project/static/media/profileImg.885cd5e994a980ab78aa.png",
     "static/media/newsImg.png": "/my-pet-project/static/media/newsImg.4f4e7fb68ee05696c30d.png",
@@ -17,10 +17,10 @@
     "static/media/js.png": "/my-pet-project/static/media/js.3dfb665e058d08c99f28.png",
     "index.html": "/my-pet-project/index.html",
     "main.ac20eef8.css.map": "/my-pet-project/static/css/main.ac20eef8.css.map",
-    "main.e16b06db.js.map": "/my-pet-project/static/js/main.e16b06db.js.map"
+    "main.175b7bc8.js.map": "/my-pet-project/static/js/main.175b7bc8.js.map"
   },
   "entrypoints": [
     "static/css/main.ac20eef8.css",
-    "static/js/main.e16b06db.js"
+    "static/js/main.175b7bc8.js"
   ]
 }
