@@ -20,7 +20,7 @@ const initialState = {
     pages: [
         {
             title: "Home",
-            description: `Your first stop at my site! You are now on the home page. Here I talk about the existing pages in my application and how to interact with it. At the bottom of the page you can notice the navigation buttons, by clicking on which you can read the information about each page. Also by clicking on the button 'Show Me!' (disable here) you can go to the page you are interested in.This application was created for fun and for the practice of my skills.Thanks and enjoy it!`,
+            description: `Your first stop at my application! You are now on the home page. Here I talk about the existing pages in my application and how to interact with them.  At the bottom of the page you can notice the navigation buttons, by clicking on which you can read the information about each page. Also by clicking on the button 'Show Me!' (disable here) you can go to the page you are interested in.This application was created for fun and for my skills’ practice.Thanks for watching and enjoy it!`,
             buttonText: "You Already Here",
             img: homePageImg,
             bgcolor: "#ffbfba",
